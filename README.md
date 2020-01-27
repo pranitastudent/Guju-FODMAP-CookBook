@@ -27,7 +27,7 @@ The user must be able to search for a recipe using 'keywords' in the search bar 
 
 <p>The wireframes for the Date Centric Milestone Project- Gujarati FODMAP CookBook - Milestone 4 Project project were created using Balsamiq. Mocks-ups were produced for desktop and mobile versions.</p>
 
-[Wire Frames](wireframes/ecommerce.pdf)
+[test](wireframes/milestone.pdf)
 
 ## Features
 
