@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+body {
+    font-family: 'Manjari', sans-serif; 
+}
+
+/* CSS Variables */
+
+:root {
+    --light-color: #f3f3f3;
+    --dark-color: #333;
+    --primary-color:#00b33c;
+    --secondary-color: #0066ff;
+}
+
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;   
+
+}
+
+/* Navbar */
+
+.navbar {
+    opacity: 0.9; 
+    height:auto;
+    width:auto;
+    background: var(--secondary-color);
+}
+
+.title {
+    letter-spacing: 1px;
+}
+
+.navbar-toggler {
+    background-color: var(--dark-color);
+    opacity: 0.8;
+   
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+}
+.icon-bar {
+    color:#fff;
+}
+
+.nav-link a {
+    color:#fff;
+}
+
+/* Social Media Icons */
+.fab {
+    margin-right:0.5em; 
+    color: var(--dark-color);
+ }
+ 
+  .social a :hover {
+     color: var(--secondary-color);
+ }

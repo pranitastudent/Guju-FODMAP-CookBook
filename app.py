@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, render_template
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -17,7 +17,7 @@ app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY')
 
 @app.route('/')
 def index():
-    return '<h1>Hello World</h1>'
+    return render_template('index.html')
     
 
 
