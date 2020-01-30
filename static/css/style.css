@@ -1,8 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 
 body {
+    min-height:100%; 
+    min-width:100%;
+    position:relative; 
     font-family: 'Manjari', sans-serif; 
 }
+
+html {
+    height: 100%;
+    }
+
+html, body  {
+    width: 100%;
+    overflow-x: hidden;
+      
+    }  
 
 /* CSS Variables */
 
@@ -52,6 +65,16 @@ body {
     color:#fff;
 }
 
+/* Showcase */
+
+#showcase {
+    position:relative;
+    background:url("../img/showcase.jpg") no-repeat center center/cover ;
+    min-height:600px; 
+}
+
+
+
 /* Social Media Icons */
 .fab {
     margin-right:0.5em; 
@@ -60,4 +83,19 @@ body {
  
   .social a :hover {
      color: var(--secondary-color);
+ }
+
+ /* Rule */
+
+ .rule {
+     background-color:#fff;
+ }
+
+ /* Media Queries */
+
+ @media(max-width:500px) {
+     .main-title {
+       font-size: 70px;
+     }
+
  }
