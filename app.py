@@ -1,23 +1,30 @@
 import os
-from flask import Flask, render_template
-from flask_pymongo import PyMongo
+import pymongo
+from flask import Flask, render_template, redirect, request, url_for
+from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 
 # App Config 
 app = Flask(__name__)
 
-app.config["MONGO_DBNAME"] = os.environ.get('MONGO_DBNAME')
+if os.path.exists('env.py'):
+    import env
+    
+app.config["MONGO_DB"] = os.environ.get('MONGO_DB')   
 
-app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
+app.config["MONGO_URI"] = os.environ.get('MONGO_URI') 
 
-SECRET_KEY = os.urandom(32)
 app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY')
+
+mongo = PyMongo(app)
+
+# 'mongodb+srv://root:RootUser@myfirstdatabase-klrg6.mongodb.net/GujuCookBook?retryWrites=true'
 
 # Routes
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', tasks=mongo.db.tasks.find())
     
 
 
