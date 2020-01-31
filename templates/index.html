@@ -4,48 +4,67 @@
 
 <!-- Showcase -->
 <section id="showcase" class="py-5">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-xs-12 text-center main">
-					<h4 class="display-2  mt-5 pt-5 pr-3 text-center text-white main-title">Your favourite Gujarati dishes The FODMAP Way!</h3>
-					<hr class="rule"><br>
-					<p class="lead text-white">Created January 2020</p>
-					<a href="#" class="btn btn-success btn-lg text-white">Buy Utensils!</a>
-				</div>
-			</div>
-		</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-xs-12 text-center main">
+        <h4 class="display-2  mt-5 pt-5 pr-3 text-center text-white main-title">Your favourite Gujarati dishes The
+          FODMAP Way!</h3>
+          <hr class="rule"><br>
+          <p class="lead text-white">Created January 2020</p>
+          <a href="#" class="btn btn-success btn-lg text-white">Buy kitchen tools!</a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Recipes -->
 
-{% for task in tasks %}
-<p>{{ task.task_name }}</p>
-<p>{{ task.category_name }}</p>
-<p>{{ task.task_description }}</p>
+<div class="album py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center pb-2"><strong>RECIPES</strong></h2>
+    <div class="row">
+      {% for task in tasks %}
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm text-center">
+          <img class="prd card-img-top img-fluid" src="{{ task.recipe_image }}"></a>
+          <div class="card-body">
+            <h3 class="card-text">{{ task.recipe_name}}</h3>
+            <p class="card-text">Course: {{ task.recipe_course}}</p>
+            <p class="card-text">Allergen: {{ task.allergen}}</p>
+            <hr>
+            <a class="text-center" href="#">View Recipe</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
 
- {% endfor %} 
 
-   
 <!-- Pagination -->
+<div class="container mb-5">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3 py-5 d-flex">
+      <ul class="pagination mx-auto">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-<nav aria-label="Page navigation example">
-    <ul class="pagination">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-          <span class="sr-only">Previous</span>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-          <span class="sr-only">Next</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
 
 {% endblock %}
