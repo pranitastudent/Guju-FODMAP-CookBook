@@ -97,8 +97,11 @@ html, body  {
      .main-title {
        font-size: 70px;
      }
+     .pagination {
+         margin:auto;
+     }
 
- }
+}
 
  @media (min-width:700px) {
     .prd  {

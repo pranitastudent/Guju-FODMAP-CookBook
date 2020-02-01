@@ -1,8 +1,11 @@
 import os
-import pymongo
+import math
+import re
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
+from flask import session
 
 # App Config 
 app = Flask(__name__)
@@ -18,15 +21,21 @@ app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY')
 
 mongo = PyMongo(app)
 
-# 'mongodb+srv://root:RootUser@myfirstdatabase-klrg6.mongodb.net/GujuCookBook?retryWrites=true'
+
 
 # Routes
 
 @app.route('/')
 def index():
     
-    tasks=mongo.db.tasks.find().limit(6)
-    return render_template('index.html', tasks=tasks)
+    # logic for pagination
+    
+    page_limit = 6
+    current_page = int(request.args.get('current_page', 1))
+    total = mongo.db.tasks.count()
+    pages = range(1, int(math.ceil(total / page_limit)) + 1)
+    tasks=mongo.db.tasks.find().sort('_id', pymongo.ASCENDING).skip((current_page - 1)*page_limit).limit(page_limit)
+    return render_template('index.html', tasks=tasks, title='Home', current_page=current_page, pages=pages)
     
 
 
