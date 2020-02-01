@@ -49,8 +49,21 @@ def task(task_id):
     """
     task_count=mongo.db.tasks.count()
     return render_template('recipe.html', task_count=task_count, task=mongo.db.tasks.find_one({'_id':ObjectId(task_id)}))
-    
 
+
+# Search
+
+@app.route('/search')
+def search():
+    page-limit = 6
+    current_page = int(request.args.get('current_page', 1))
+    
+    
+# About
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
     
 
 

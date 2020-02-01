@@ -65,6 +65,13 @@ html, body  {
     color:#fff;
 }
 
+/* About */
+
+.about {
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+}
+
 /* Showcase */
 
 #showcase {
@@ -82,10 +89,20 @@ html, body  {
  /* images */
 
  .img-photo {
-     max-width:300px!important;
-     height:auto;
+     max-width:500px;
+     height:400px;
  }
 
+ .img-pranita {
+     max-width:500px;
+     height:400px;
+     border-radius: 15px;
+
+ }
+
+.img-intestine {
+    padding-left: 4em;
+}
 /* Social Media Icons */
 .fab {
     margin-right:0.5em; 
@@ -115,6 +132,11 @@ html, body  {
      .pagination {
          margin:auto;
      }
+
+     .img-photo {
+        max-width:300px;
+        height:auto;
+    }
 
 }
 
