@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Recipe Name -->
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-xs-12 text-center">
+        <h1 class ="text-center pt-3">{{ task.recipe_name }}</h1>
+        </div>
+    </div>
+</div>
+
+<!-- Recipe Ingredients and Photo -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-xs-12 mt-3">
+            <h2 class="text-center pt-5 pb-3">INGREDIENTS</h2>
+            <p>{{ task.ingredients}}</p>          
+            
+            <h6 class ="text-center mt-5"><strong>Cooking Time: {{ task.cooking_time}}&nbsp;minutes</strong></h6> 
+            <p class ="text-center mt-3"><i class="ingredients fas fa-clock fa-2x"></i></p>
+            
+            <h6 class ="text-center mt-5"><strong>Serving Size : {{ task.serving_size }}&nbsp;people</strong></h6> 
+            <p class ="text-center mt-3"><i class="fas fa-user-friends fa-2x"></i></p>
+
+            <h6 class ="text-center mt-5"><strong>Calories : {{ task.calories}}&nbsp;calories</strong></h6>  
+            <p class ="text-center mt-3"><i class="fas fa-utensils fa-2x"></i></p>
+
+          
+           </div>
+        <div class="col-sm-6 col-xs-12 mt-5 pb-3">
+            <img class=" img-photo" src="{{ task.recipe_image }}" alt="">
+        </div>
+    </div>
+</div>
+
+<!-- Recipe Method -->
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-xs-12">
+        <h1 class="text-center mt-3 pb-3">METHOD</h1>
+        <ol class="pl-3">
+        <li class="m2 pl-2">{{task.instruction}}</li><br>
+        <li class="m2 pl-2">{{task.instruction1}}</li><br> 
+        <li class="m2 pl-2">{{task.instruction2}}</li><br> 
+        <li class="m2 pl-2">{{task.instruction3}}</li><br>
+        <li class="m2 pl-2">{{task.instruction4}}</li><br> 
+        <li class="m2 pl-2">{{task.instruction5}}</li><br> 
+        <li class="m2 pl-2">{{task.instruction6}}</li>                     
+        </ol>
+        </div>
+    </div>
+</div
+
+
+{% endblock %}

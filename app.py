@@ -25,6 +25,8 @@ mongo = PyMongo(app)
 
 # Routes
 
+# Home Route
+
 @app.route('/')
 def index():
     
@@ -36,6 +38,19 @@ def index():
     pages = range(1, int(math.ceil(total / page_limit)) + 1)
     tasks=mongo.db.tasks.find().sort('_id', pymongo.ASCENDING).skip((current_page - 1)*page_limit).limit(page_limit)
     return render_template('index.html', tasks=tasks, title='Home', current_page=current_page, pages=pages)
+
+# View Each Recipe
+
+@app.route('/task/<task_id>')
+def task(task_id):
+    """
+    Allows User to view the full
+    individual recipe
+    """
+    task_count=mongo.db.tasks.count()
+    return render_template('recipe.html', task_count=task_count, task=mongo.db.tasks.find_one({'_id':ObjectId(task_id)}))
+    
+
     
 
 

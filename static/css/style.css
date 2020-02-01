@@ -73,7 +73,18 @@ html, body  {
     min-height:600px; 
 }
 
+/* Labels*/
 
+.labels {
+    padding-left:40px;
+ }
+
+ /* images */
+
+ .img-photo {
+     max-width:300px!important;
+     height:auto;
+ }
 
 /* Social Media Icons */
 .fab {
@@ -83,6 +94,10 @@ html, body  {
  
   .social a :hover {
      color: var(--secondary-color);
+ }
+
+ .ingredients {
+     text-align: center;
  }
 
  /* Rule */

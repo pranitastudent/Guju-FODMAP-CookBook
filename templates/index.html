@@ -44,7 +44,7 @@
             <p class="card-text">Course: {{ task.recipe_course}}</p>
             <p class="card-text">Allergen: {{ task.allergen}}</p>
             <hr>
-            <a class="text-center" href="#">View Recipe</a>
+            <a class="text-center" href="{{ url_for('task', task_id=task._id)}}">View Recipe</a>
           </div>
         </div>
       </div>
