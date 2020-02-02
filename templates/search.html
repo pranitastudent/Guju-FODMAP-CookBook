@@ -9,38 +9,12 @@
       <div class="col-sm-12 col-xs-12">
           <form action="{{ url_for('findtask') }}" class="search-form">
               <div class="input-field col-sm-12 col-xs-12">
-                  <input name="query" id="q" type="text" placeholder="Search  Recipe Name">
+                  <input name="query" id="q" type="text" placeholder="Search Recipe Name">
                   <button class="btn btn-success search" type="submit">Find</button>
               </div>
           </form>
       </div>
   </div>
 </div>
-
-
-  <!-- Pagination -->
-  
-<div class="container">
-  <div class="row">
-    <div class="col-lg-6 offset-lg-3 py-5 d-flex">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 offset-lg-3 py-3 d-flex pag">
-            <ul class="pagination">
-              {% for page_number in pages %} {% if page_number == current_page %}              
-              <li class="page-item active"><a class="page-link" href="#">{{ page_number}}</a></li>
-              {% else %}
-              <li class="page-item"><a class="page-link" href="{{ url_for('index', current_page=page_number) }}">{{ page_number }}</a></li>
-              {% endif %} {% endfor %}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
 
 {% endblock %}
