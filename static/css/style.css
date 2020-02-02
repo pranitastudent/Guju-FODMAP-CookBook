@@ -103,7 +103,16 @@ html, body  {
 .img-intestine {
     padding-left: 4em;
 }
+
+/* Inputs */
+
+input {
+    width:100%;
+    margin-top:2rem;
+}
+
 /* Social Media Icons */
+
 .fab {
     margin-right:0.5em; 
     color: var(--dark-color);
@@ -115,6 +124,14 @@ html, body  {
 
  .ingredients {
      text-align: center;
+ }
+
+ /* Buttons */
+
+ .search {
+     margin-top: 1rem;
+     text-align:center;
+     
  }
 
  /* Rule */

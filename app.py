@@ -53,10 +53,21 @@ def task(task_id):
 
 # Search
 
-@app.route('/search')
-def search():
-    page-limit = 6
-    current_page = int(request.args.get('current_page', 1))
+@app.route("/findtask", methods=['GET', 'POST'])
+def findtask():
+    tasks=mongo.db.tasks
+    if request.method == 'POST':
+        requested_type = request.form.get("recipe_name")
+        
+        tasks = mongo.db.tasks.find({"recipe_name": requested_type})
+        return render_template("index.html", tasks=tasks)
+        
+    return render_template("index.html")
+
+
+# Filters
+
+    
     
     
 # About
