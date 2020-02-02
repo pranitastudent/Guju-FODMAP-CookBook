@@ -55,14 +55,10 @@ def task(task_id):
 
 @app.route("/findtask", methods=['GET', 'POST'])
 def findtask():
-    tasks=mongo.db.tasks
-    if request.method == 'POST':
-        requested_type = request.form.get("recipe_name")
-        
-        tasks = mongo.db.tasks.find({"recipe_name": requested_type})
-        return render_template("index.html", tasks=tasks)
-        
-    return render_template("index.html")
+    query = request.args.get('q')
+    mongo=db.tasks.create_index([("recipe_name", PyMongo.TEXT)], name="text")
+    results = mongo.db.tasks.find({'$text': {'$search': query}})      
+    return render_template("search.html", results=results, query=query, title="Search")
 
 
 # Filters
@@ -75,10 +71,16 @@ def findtask():
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+# Login
+
+# Register
+
+# Logout
     
 
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
-            debug=True)
+debug=True)
