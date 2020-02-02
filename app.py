@@ -56,8 +56,8 @@ def task(task_id):
 @app.route("/findtask", methods=['GET', 'POST'])
 def findtask():
     query = request.args.get('q')
-    mongo=db.tasks.create_index([("recipe_name", PyMongo.TEXT)], name="text")
-    results = mongo.db.tasks.find({'$text': {'$search': query}})      
+    total = mongo.db.tasks.create_index( { recipe_name:"text"})
+    results = mongo.db.tasks.find( { $text: { $search: "query" } } )      
     return render_template("search.html", results=results, query=query, title="Search")
 
 
