@@ -1,3 +1,25 @@
 {% extends 'base.html' %}
+
 {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-xs-12 mx-auto">
+            <h2 class="form-title">Login</h2>
+            <form methods="POST" action="">
+                {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+                <p class="flashMessage">{{ message }}</p>
+                {% endfor %} {% endif %} {% endwith %}
+                <div class="input-field">
+                    {{form.username(class='form-control', required=true, placeholder='Enter Username')}}
+                </div>
+                <div class="input-field">
+                    {{form.password(class='form-control', required=true, placeholder='Enter Password')}}
+                </div>
+                <button class="btn btn-primary-outline" type="submit">Login</button>
+                <p>Not Registered <a class="register" href="{{ url_for('register') }}">Click Here</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

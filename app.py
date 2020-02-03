@@ -79,7 +79,7 @@ def findtask():
 def about():
     return render_template('about.html')
 
-# Login
+# Login- Code adapted from Corey Schafer Flask Series
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
