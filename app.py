@@ -3,7 +3,6 @@ import math
 import re
 import bcrypt
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user, current_user, logout_user, login_required
 from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo, pymongo
 from forms import RegistrationForm, LoginForm
@@ -12,6 +11,7 @@ from flask import session
 
 # App Config 
 app = Flask(__name__)
+
 
 if os.path.exists('env.py'):
     import env
@@ -58,9 +58,17 @@ def task(task_id):
 
 @app.route('/findtask')
 def findtask():
-    query = request.args.get('q')
-    results = mongo.db.tasks.find({"recipe_name" : {"$regex": query}})   
-    return render_template('search.html', results=results, query=query, title="Search")
+    """
+    Allows user to perform full exact matches
+    ro recipes
+    """
+    query = request.args.get('query')
+    results = mongo.db.tasks.find()
+    if results.count():
+         return render_template('search.html', results=results, query=query, title="Search")        
+    else:
+        return '<h1> No results were found </h1>'     
+    return render_template('index.html')
 
 
 # Filters
@@ -81,15 +89,10 @@ def about():
 
 # Login- Code adapted from Corey Schafer Flask Series
 
-@app.route('/login')
-def login():               
-    return render_template('login.html', title='Login', form=form)
 
 # Register- Code adapted from Corey Schafer Flask Series
 
-@app.route("/register")
-def register():   
-    return render_template('register.html', title='Register', form=form)
+
 
 
 # Logout
