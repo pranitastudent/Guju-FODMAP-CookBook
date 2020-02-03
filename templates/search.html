@@ -19,7 +19,12 @@
 
 <!-- Results -->
 
-{{results}}
+{% for result in results %}
+
+
+{{result.recipe_name}}
+
+{% endfor %}
 
 
 <!-- <div class="album py-5 bg-light">
