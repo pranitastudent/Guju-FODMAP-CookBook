@@ -2,8 +2,9 @@ import os
 import math
 import re
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo, pymongo
+from forms import RegistrationForm
 from bson.objectid import ObjectId
 from flask import session
 
@@ -53,16 +54,20 @@ def task(task_id):
 
 # Search
 
-@app.route("/findtask")
+@app.route('/findtask')
 def findtask():
     query = request.args.get('q')
-    mongo.db.tasks.create_index( {'recipe_name':'text'} )  
-    results = mongo.db.tasks.find( { '$text': { '$search': query } } )       
+    results = mongo.db.tasks.find({"recipe_name" : {"$regex": query}})   
     return render_template('search.html', results=results, query=query, title="Search")
 
 
 # Filters
 
+# Create Recipe
+
+# Update Recipe
+
+# Delete Recipe
     
     
     
@@ -74,9 +79,35 @@ def about():
 
 # Login
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
 # Register
+@app.route('/register', methods=['POST','GET'])
+def register():    
+    """
+    Registration of Users
+    """
+    if current_user.is_authenticated:
+        return redirect('index.html')
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
+        flash('Your account has been created! You are now able to log in', 'success')
+        return redirect(url_for('login'))
+    return render_template('register.html', title='Register', form=form)
+
+
 
 # Logout
+
+@app.route('/logout')
+def logout():
+    return render_template('logout')
     
 
 
