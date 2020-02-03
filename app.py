@@ -1,10 +1,12 @@
 import os
 import math
 import re
+import bcrypt
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import login_user, current_user, logout_user, login_required
 from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo, pymongo
-from forms import RegistrationForm
+from forms import RegistrationForm, LoginForm
 from bson.objectid import ObjectId
 from flask import session
 
@@ -79,18 +81,28 @@ def about():
 
 # Login
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template('login.html')
-
-# Register
-@app.route('/register', methods=['POST','GET'])
-def register():    
-    """
-    Registration of Users
-    """
     if current_user.is_authenticated:
-        return redirect('index.html')
+        return redirect(url_for('index'))
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            return redirect(url_for('index'))
+        flash('You are successfully logged in', 'success')
+        
+        else:
+            flash('Your password or username is incorrct. Please check', 'danger')
+            
+    return render_template('login.html', title='Login', form=form)
+
+# Register- Code adapted from Corey Schafer Flask Series
+
+@users.route("/register", methods=['GET', 'POST'])
+def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
@@ -102,12 +114,12 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
-
 # Logout
 
 @app.route('/logout')
 def logout():
-    return render_template('logout')
+    flash('You are successfully logged out', 'success')
+    return render_template('index')
     
 
 
