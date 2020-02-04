@@ -24,6 +24,27 @@
 <!-- Nav Bar -->
 {% include 'navbar.html'%}
 
+<!-- Messages- code adapted from Coderwall (https://coderwall.com/p/ijrrpa/flask-flash-messages-as-bootstrap-alert) -->
+
+<div class="container-fluid text-center px-0">
+    <div class="row">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+         <div class="col-xs-12 col-sm-12 mx-auto">
+        <div class="alert mb-0 alert-{{ category }} alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {{ message }}
+        </div>
+    </div>
+        {% endfor %}
+     {% endif %}
+    {% endwith %}
+</div>
+</div>
+
+<!-- End of messages -->
+
 <!-- Main Content -->
 
 {% block content %}

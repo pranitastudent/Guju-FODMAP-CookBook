@@ -69,7 +69,7 @@ def findtask():
     if results.count():
          return render_template('search.html', results=results, query=query, title="Search")        
     else:
-        return '<h1> No results were found </h1>'     
+        flash('No results were found', 'info')     
     return render_template('index.html')
 
 
