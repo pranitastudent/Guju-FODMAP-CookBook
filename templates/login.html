@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<!--Login-->
+
 <section class="container my-5">
     <div class="row">
         <div class="col-sm-6 col-xs-12 mx-auto">
@@ -10,19 +12,19 @@
                     <h4 class="text-center p-3">Login</h4>
                 </div>
                 <div class="card-body">
-                    <form class="form-signin" method="POST" action="/login">
+                    <form class="form-login" method="POST" action="/login">
+                        {{ form.csrf_token }}
                         <div class="form-group">
-                            <label for="sign-in-username">User name</label>
-                            <input name="username" type="text" class="form-control" id="sign-in-username" required>
+                            <label for="username">Username</label>
+                            <input class="form-control" name="username" type="username" id="username" required="true">
                         </div>
-
                         <div class="form-group">
-                            <label for="sign-in-password">Password</label>
-                            <input class="form-control" name="user_password" type="password" id="sign-in-password"
-                                required>
+                            <label for="password">Password</label>
+                            <input class="form-control" name="password" type="password" id="password" required="true">                                
                         </div>
-                        <button class="btn btn-outline-success btn-lg btn-block" type="submit">Login</button>
-                        <p>Not Registered <a class="register" href="#">Click Here</a></p>
+                        
+                        <button class="btn btn-outline-primary btn-lg btn-block my-5" type="submit">Login</button>
+                        <p class="my-5">Not Registered <a class="login" href="{{url_for('register')}}">Click Here</a></p>
                     </form>
                 </div>
             </div>

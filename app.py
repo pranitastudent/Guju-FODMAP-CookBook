@@ -89,11 +89,33 @@ def findtask():
 def about():
     return render_template('about.html')
 
-# Login- Code adapted from Corey Schafer Flask Series
+# Login- Code adapted from Pretty printed video
 
-@app.route('/login')
+@app.route('/login', methods=['GET','POST'])
 def login():
-    return render_template('login.html')
+    form = LoginForm()
+    # Check if user is already logged
+    if request.method == 'GET':    
+        if 'username' in session:                        
+            flash('You are already logged in!', 'success')
+            return redirect(url_for('index'))
+        return render_template('login.html', form=form)
+    
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            user = mongo.db.user
+            username = user.find_one({'name': request.form['username'].title()})
+            
+            if 'username':
+                if check_password_hash(username['pass'],request.form.get['password']):
+                    session['username'] = request.form.get['username']
+                    session['username'] = True
+                    flash('You are successfully logged in', 'success')
+                    return redirect(url_for('index'))
+                flash('Sorry your password is incorrect', 'danger')
+                return redirect(url_for('login'))
+    return render_template(url_for('login'), form=form, title='Login')        
+    
 
 
 # Register- Code adapted from Pretty printed video- PyMongo Login/Register - Debugging added by Tutor Tim Nelson
@@ -120,7 +142,8 @@ def register():
                 user.insert_one({'name': request.form.get('username').title(),
                     'pass': hash_pass})
                 session['username'] = request.form.get('username')
-                return redirect(url_for('index'))
+                flash('You are successfully registered, Please log in!', 'success')
+                return redirect(url_for('login'))
             else:
                 flash('Sorry, username already taken. Please try another.', 'warning')
                 return redirect(url_for('register', form=form, title='Register'))
