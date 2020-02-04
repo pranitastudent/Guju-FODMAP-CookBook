@@ -5,20 +5,21 @@
 <!-- Search -->
 
 <div class="container text-center">
-  <div class="row">
-      <div class="col-sm-12 col-xs-12">
+  <h2 class="text-center my-2">SEARCH</h2>
+  <div class="row">   
+      <div class="col-sm-12 col-xs-12">        
           <form action="{{ url_for('findtask') }}" class="search-form">
-              <div class="input-field col-sm-12 col-xs-12">
-                  <input name="query" type="text" placeholder="Search Recipe Name">
-                  <button class="btn btn-success search" type="submit">Find</button>
+              <div class="input-field col-sm-12 col-xs-12 d-flex">
+                  <input name="query" type="text"  placeholder="Search Recipe Name">&nbsp;&nbsp;&nbsp;
+                  <button class="btn btn-success search" type="submit">Search</button>
               </div>
           </form>
       </div>
   </div>
 </div>
 
-<!-- Results -->
 
+<!-- Results -->
 
 
 <div class="album py-5 bg-light">

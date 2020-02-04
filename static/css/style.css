@@ -35,6 +35,11 @@ html, body  {
 
 }
 
+/* Backgrounds */
+
+.bg-reg {
+    background-color: var(--dark-color);
+}
 /* Navbar */
 
 .navbar {
@@ -131,7 +136,14 @@ input {
  .search {
      margin-top: 1rem;
      text-align:center;
+     width:100px;
      
+ }
+
+ /* Inputs */
+
+ input {
+     text-align: center;
  }
 
  /* Rule */

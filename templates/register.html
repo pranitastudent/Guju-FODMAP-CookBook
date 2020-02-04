@@ -1,25 +1,37 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
+
+<section class="container my-5">
     <div class="row">
         <div class="col-sm-6 col-xs-12 mx-auto">
-            <h2 class="form-title">Register</h2>
-            <form methods="POST" action="">
-                {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
-                <p class="flashMessage">{{ message }}</p>
-                {% endfor %} {% endif %} {% endwith %}
-                <div class="input-field">
-                    {{form.username(class='form-control', required=true, placeholder='Enter Username')}}
+            <div class="card">
+                <div class="card-heading bg-primary text-white">
+                    <h4 class="text-center p-3">Register</h4>
                 </div>
-                <div class="input-field">
-                    {{form.password(class='form-control', required=true, placeholder='Enter Password')}}
+                <div class="card-body">
+                    <form class="form-signin" method="POST" action="/register">
+                        <div class="form-group">
+                            <label for="sign-in-username">User name</label>
+                            <input class="form-control" name="username" type="username" id="username" required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input class="form-control" name="email" type="email" id="email" required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="sign-in-password">Password</label>
+                            <input class="form-control" name="user_password" type="password" id="sign-in-password" required="true">
+                                
+                        </div>
+                        
+                        <button class="btn btn-outline-success btn-lg btn-block" type="submit">Sign Up</button>
+                        <p>Already Registered <a class="login" href="#">Click Here</a></p>
+                    </form>
                 </div>
-                <button class="btn btn-success-outline" type="submit">Register</button>
-                <p>Already Registered <a class="register" href="{{ url_for('login') }}">Click Here To Login</a></p>
-            </form>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
 {% endblock %}

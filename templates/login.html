@@ -1,25 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
+
+<section class="container my-5">
     <div class="row">
         <div class="col-sm-6 col-xs-12 mx-auto">
-            <h2 class="form-title">Login</h2>
-            <form methods="POST" action="">
-                {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
-                <p class="flashMessage">{{ message }}</p>
-                {% endfor %} {% endif %} {% endwith %}
-                <div class="input-field">
-                    {{form.username(class='form-control', required=true, placeholder='Enter Username')}}
+            <div class="card">
+                <div class="card-heading bg-primary text-white">
+                    <h4 class="text-center p-3">Login</h4>
                 </div>
-                <div class="input-field">
-                    {{form.password(class='form-control', required=true, placeholder='Enter Password')}}
+                <div class="card-body">
+                    <form class="form-signin" method="POST" action="/login">
+                        <div class="form-group">
+                            <label for="sign-in-username">User name</label>
+                            <input name="username" type="text" class="form-control" id="sign-in-username" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sign-in-password">Password</label>
+                            <input class="form-control" name="user_password" type="password" id="sign-in-password"
+                                required>
+                        </div>
+                        <button class="btn btn-outline-success btn-lg btn-block" type="submit">Login</button>
+                        <p>Not Registered <a class="register" href="#">Click Here</a></p>
+                    </form>
                 </div>
-                <button class="btn btn-primary-outline" type="submit">Login</button>
-                <p>Not Registered <a class="register" href="{{ url_for('register') }}">Click Here</a></p>
-            </form>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
 {% endblock %}
