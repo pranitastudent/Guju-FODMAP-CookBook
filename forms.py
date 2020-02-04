@@ -7,7 +7,7 @@ from wtforms.validators import DataRequired, ValidationError
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
-    password1 = PasswordField('Password', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
   
     
 # Login form

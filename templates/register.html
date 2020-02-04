@@ -11,22 +11,18 @@
                 </div>
                 <div class="card-body">
                     <form class="form-signin" method="POST" action="/register">
+                        {{ form.csrf_token }}
                         <div class="form-group">
-                            <label for="sign-in-username">User name</label>
+                            <label for="username">User name</label>
                             <input class="form-control" name="username" type="username" id="username" required="true">
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input class="form-control" name="email" type="email" id="email" required="true">
-                        </div>
-                        <div class="form-group">
-                            <label for="sign-in-password">Password</label>
-                            <input class="form-control" name="user_password" type="password" id="sign-in-password" required="true">
-                                
+                            <label for="password">Password</label>
+                            <input class="form-control" name="password" type="password" id="password" required="true">                                
                         </div>
                         
                         <button class="btn btn-outline-success btn-lg btn-block" type="submit">Sign Up</button>
-                        <p>Already Registered <a class="login" href="#">Click Here</a></p>
+                        <p class="my-2">Already Registered <a class="login" href="#">Click Here</a></p>
                     </form>
                 </div>
             </div>

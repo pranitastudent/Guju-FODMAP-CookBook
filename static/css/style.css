@@ -53,11 +53,9 @@ html, body  {
     letter-spacing: 1px;
 }
 
-.navbar-toggler {
-    background-color: var(--dark-color);
+.navbar-toggler {    
     opacity: 0.8;
-   
-}
+   }
 
 .navbar-dark .navbar-nav .nav-link {
     color: #fff;
@@ -127,6 +125,7 @@ input {
      color: var(--secondary-color);
  }
 
+  
  .ingredients {
      text-align: center;
  }
@@ -175,4 +174,10 @@ input {
         height: 30vh;
         object-fit: cover;
     }
+
+    .social {
+        text-align: right;
+        margin-left: 2em;
+    }
+   
 }

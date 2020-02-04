@@ -96,32 +96,39 @@ def login():
     return render_template('login.html')
 
 
-# Register- Code adapted from Corey Schafer Flask Series
+# Register- Code adapted from Pretty printed video- PyMongo Login/Register - Debugging added by Tutor Tim Nelson
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/register', methods=['GET','POST'])
 def register():
-    # Check if user is already registered
-    if 'logged_in' in session:
-        flash('You are already logged in!', 'success')
-        return redirect(url_for('index'))
     form = RegistrationForm()
-    if form.validate_on_submit():        
-        user = mongo.db.user
-                   
-        # check existing username    
-        exist_user = user.find_one({'name': request.form['username'].title()})
-        
-        if exist_user is None:
-        # If new user insert username, password and email into collection    
-            hash_pass = generate_password_hash(request.form['password'])
-            user.insert_one({'name': request.form['username'].title(),
-                             'pass': hash_pass})
-            session['username'] = request.form['username']
-            session['logged_in'] = True
+    # Check if user is already registered
+    if request.method == 'GET':    
+        if 'username' in session:                        
+            flash('You are already logged in!', 'success')
             return redirect(url_for('index'))
-        flash('Sorry, username already taken. Please try another.', 'warning')
-        return redirect(url_for('register'))
-    return render_template('register.html', form=form, title='Register')
+        return render_template('register.html', form=form)
+
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            user = mongo.db.user
+            # check existing username    
+            exist_user = user.find_one({'name': request.form.get('username').title()})
+
+            if exist_user is None:
+                # If new user insert username, password and email into collection
+                hash_pass = generate_password_hash(request.form.get('password'))
+                user.insert_one({'name': request.form.get('username').title(),
+                    'pass': hash_pass})
+                session['username'] = request.form.get('username')
+                return redirect(url_for('index'))
+            else:
+                flash('Sorry, username already taken. Please try another.', 'warning')
+                return redirect(url_for('register', form=form, title='Register'))
+
+        else:
+            return redirect(url_for('register', form=form, title='Register'))
+
+    return redirect(url_for('register', form=form, title='Register'))
 
 
 
