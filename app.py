@@ -103,12 +103,16 @@ def login():
     
     if request.method == 'POST':
         if form.validate_on_submit():
-            user = mongo.db.user
-            username = user.find_one({'name': request.form['username'].title()})
+            user = mongo.db.user  
+            # myvar =  request.form["myvar"]
+          
+            print(username = request.form["username"])
+            username = user.find_one({'name': request.form.get['username']})
+         
             
             if 'username':
                 if check_password_hash(username['pass'],request.form.get['password']):
-                    session['username'] = request.form.get['username']
+                    session['username'] = request.form.get['username']                                    
                     session['username'] = True
                     flash('You are successfully logged in', 'success')
                     return redirect(url_for('index'))
@@ -118,14 +122,14 @@ def login():
     
 
 
-# Register- Code adapted from Pretty printed video- PyMongo Login/Register - Debugging added by Tutor Tim Nelson
+# Register- Code adapted from Pretty printed video- PyMongo Login/Register - Debugging aided by Tutor Tim Nelson
 
 @app.route('/register', methods=['GET','POST'])
 def register():
     form = RegistrationForm()
     # Check if user is already registered
     if request.method == 'GET':    
-        if 'username' in session:                        
+        if 'logged_in' in session:                        
             flash('You are already logged in!', 'success')
             return redirect(url_for('index'))
         return render_template('register.html', form=form)
@@ -135,6 +139,7 @@ def register():
             user = mongo.db.user
             # check existing username    
             exist_user = user.find_one({'name': request.form.get('username').title()})
+            print(exist_user)
 
             if exist_user is None:
                 # If new user insert username, password and email into collection
@@ -159,6 +164,7 @@ def register():
 
 @app.route('/logout')
 def logout():
+    session.clear()
     flash('You are successfully logged out', 'success')
     return render_template('index')
     
