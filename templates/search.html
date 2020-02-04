@@ -19,12 +19,31 @@
 
 <!-- Results -->
 
-{% for result in results %}
 
 
-{{result.recipe_name}}
-
-{% endfor %}
+<div class="album py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center pb-2"><strong>RESULTS</strong></h2>
+      <div class="row">
+        {% for result in results %} 
+         <div class="col-md-4">         
+          <div class="card mb-4 shadow-sm text-center">             
+            <img class="prd card-img-top img-fluid" src="{{ result.recipe_image }}"></a>
+            <div class="card-body">
+              <h3 class="card-text">{{ result.recipe_name}}</h3>
+              <p class="card-text">Course: {{ result.recipe_course}}</p>
+              <p class="card-text">Allergen: {{ result.allergen}}</p>          
+              <hr>
+              {% for task in task %}
+              <a class="text-center" href="{{ url_for('task', task_id=task._id)}}">View Recipe</a>
+              {% endfor %}
+             </div>
+          </div>
+        </div>
+        {% endfor %}
+       </div>
+    </div>
+  </div>
 
 
 
