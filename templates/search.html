@@ -33,10 +33,8 @@
               <h3 class="card-text">{{ result.recipe_name}}</h3>
               <p class="card-text">Course: {{ result.recipe_course}}</p>
               <p class="card-text">Allergen: {{ result.allergen}}</p>          
-              <hr>
-              {% for task in task %}
-              <a class="text-center" href="{{ url_for('task', task_id=task._id)}}">View Recipe</a>
-              {% endfor %}
+              <hr>            
+              <a class="text-center" href=" {{ url_for('task', task_id=result._id) }}">View Recipe</a>            
              </div>
           </div>
         </div>
@@ -44,7 +42,6 @@
        </div>
     </div>
   </div>
-
 
 
 {% endblock %}

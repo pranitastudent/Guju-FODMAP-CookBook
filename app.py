@@ -64,7 +64,7 @@ def findtask():
     """
     query = request.args.get('query')
     print(query)
-    results = mongo.db.tasks.find({"recipe_name" : {"$regex": query}})
+    results = mongo.db.tasks.find({"recipe_name" : {"$regex": query, "$options": "i"}})
     print(results)
     if results.count():
          return render_template('search.html', results=results, query=query, title="Search")        
