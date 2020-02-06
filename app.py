@@ -89,37 +89,40 @@ def findtask():
 def about():
     return render_template('about.html')
 
-# Login- Code adapted from Pretty printed video
+# Login- Code adapted from Pretty printed video 
 
-@app.route('/login', methods=['GET','POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    """
+    Function for handling the logging in of users
+    """
+       
+    # Check if user is logged in 
+    if 'username' in session: 
+        return redirect(url_for('index'))
     form = LoginForm()
-    # Check if user is already logged
-    if request.method == 'GET':    
-        if 'username' in session:                        
-            flash('You are already logged in!', 'success')
-            return redirect(url_for('index'))
-        return render_template('login.html', form=form)
+     
+    # Check is form is valid and find user in database 
+    if form.validate_on_submit():
+        user = mongo.db.user
+        username = user.find_one({'name': request.form['username'].title()})
     
-    if request.method == 'POST':
-        if form.validate_on_submit():
-            user = mongo.db.user  
-            # myvar =  request.form["myvar"]
-          
-            print(username = request.form["username"])
-            username = user.find_one({'name': request.form.get['username']})
-         
+    # Check is user - password is hashed and does the password match    
+        if username:
+            if check_password_hash(username['pass'],
+                                   request.form['password']):
+                session['username'] = request.form['username']
+                session['username'] = True
+                
+                # If password matches redirect to index
+                return redirect(url_for('index'))
+            # If not show message below and redirect to login 
+            flash('Sorry incorrect password!')
             
-            if 'username':
-                if check_password_hash(username['pass'],request.form.get['password']):
-                    session['username'] = request.form.get['username']                                    
-                    session['username'] = True
-                    flash('You are successfully logged in', 'success')
-                    return redirect(url_for('index'))
-                flash('Sorry your password is incorrect', 'danger')
-                return redirect(url_for('login'))
-    return render_template(url_for('login'), form=form, title='Login')        
-    
+            return redirect(url_for('login'))
+        # If none of the form is valid or nothing matches username or password then redirect to login
+    return render_template('login.html', form=form, title='Login')
+
 
 
 # Register- Code adapted from Pretty printed video- PyMongo Login/Register - Debugging aided by Tutor Tim Nelson
