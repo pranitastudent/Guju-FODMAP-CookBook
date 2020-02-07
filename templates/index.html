@@ -45,7 +45,7 @@
   <div class="card">
     <div class="card-header" id="headingOne">
       <h5 class="mb-0 text-center">      
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <button class="btn btn-link titles" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
           Courses
         </button>
       </h5>
@@ -53,29 +53,40 @@
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body radio">
-        <div class="radio-1">
-        <input type="radio" name="course" value="starter"> Starter<br>
-        <input type="radio" name="course" value="main"> Main<br>
-        <input type="radio" name="course" value="desert"> Desert<br>  
-        </div>        
+
+        <form action="/filters"  class="form-filters" method="POST">
+
+      {% for task in tasks %}
+        
+      <input class="form-input" type="radio" value="{{tasks.recipe_course}}" name="course" id="{{tasks.recipe_course}}">
+      {% endfor %}
+        
+      </form>
+             
       </div>
     </div>
   </div>
   <div class="card">
     <div class="card-header" id="headingTwo">
       <h5 class="mb-0 text-center">
-        <button class="btn btn-link collapsed text-center" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <button class="btn btn-link collapsed text-center titles" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
          Allergen
         </button>
       </h5>
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
       <div class="card-body radio">
-        <div class="radio-1">
-        <input type="radio" name="allergen" value="starter"> None<br>
-        <input type="radio" name="allergen" value="main"> Nuts<br>
-        <input type="radio" name="allergen" value="desert"> Egg<br>
-      </div>     
+        
+        <form action="/filters"  class="form-filters" method="POST">
+
+          {% for task in tasks %}
+            
+          <input class="form-input" type="radio" value="{{task.allergen}}" name="course" id="{{task.allergen}}">
+
+          {% endfor %}
+            
+          </form>
+       
       </div>
     </div>
   </div>

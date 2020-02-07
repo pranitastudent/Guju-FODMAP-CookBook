@@ -139,17 +139,24 @@ input {
      
  }
 
- .radio {
-     display: flex;
-     justify-content: center;
+button.btn.btn-link.titles {
+     color: #000;
+     text-decoration: none;
+     font-weight: 300;
+     font-size: 20px;
  }
+
+ .radio {
+  
+    display: flex;
+    align-content: center;
+  }
 
  .filter {
      width:90px;
      height:50px;
  }
- /* Inputs */
-
+ 
  
  /* Rule */
 
