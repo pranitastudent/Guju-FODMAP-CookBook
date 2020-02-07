@@ -3,7 +3,7 @@
     <h6 class="title text-white d-inline align-middle">Gujarati FODMAP CookBook</h6>
     </a>
 
-    <span class="username"><strong>User:&nbsp;{{ username }}</strong></span>
+    <span class="username"><strong>User:&nbsp;{% if 'username' in session %}{{ session['username'].title() }}{% endif %}</strong></span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
         <span class="navbar-toggler-icon">      
         </span>
@@ -14,24 +14,25 @@
                     
             <li class="nav-item ">         
                 <a class="nav-link" href="{{ url_for('index')}}"><i class="fas fa-home"></i>&nbsp;Home</a>
-                      
+             
+            {% if 'username' in session %}    
             <li class="nav-item">              
-                <a class="nav-link" href="#"> <i class="fas fa-sign-out-alt"></i>&nbsp;Logout</a>
-            </li>   
+                <a class="nav-link" href="{{ url_for('logout')}}"> <i class="fas fa-sign-out-alt"></i>&nbsp;Logout</a>
+            </li>
+            {% else %}   
                      
             <li class="nav-item ">              
                 <a class="nav-link" href="{{ url_for('register')}}"><i class="fas fa-user-plus"></i>&nbsp;Register</a>
-            </li>
-        
+            </li>        
                        
             <li class="nav-item">             
                 <a class="nav-link" href="{{ url_for('login')}}"><i class="fas fa-sign-in-alt"></i>&nbsp;Login</a>
-            </li>     
+            </li> 
+            {% endif %}    
              
             <li class="nav-item">               
                 <a class="nav-link" href="{{ url_for('about')}}">About</a>
             </li>
-
                  
             <li class="nav-item ">            
                 <a class="nav-link" href="#"><i class="fas fa-store"></i>&nbsp;Products</a>

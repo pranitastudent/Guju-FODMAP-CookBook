@@ -4,6 +4,7 @@ import re
 import bcrypt
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Flask, render_template, redirect, request, url_for, flash
+from flask_login import login_required
 from flask_pymongo import PyMongo, pymongo
 from forms import RegistrationForm, LoginForm
 from bson.objectid import ObjectId
@@ -23,6 +24,8 @@ app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY')
 
 mongo = PyMongo(app)
+
+# Flask Login
 
 
 
@@ -98,30 +101,33 @@ def login():
     """
        
     # Check if user is logged in 
-    if 'username' in session: 
+    if 'logged_in' in session: 
         return redirect(url_for('index'))
     form = LoginForm()
      
     # Check is form is valid and find user in database 
     if form.validate_on_submit():
         user = mongo.db.user
-        username = user.find_one({'name': request.form['username'].title()})
+        logged_in_user = user.find_one({'name': request.form['username'].title()})
     
     # Check is user - password is hashed and does the password match    
-        if username:
-            if check_password_hash(username['pass'],
+        if logged_in_user:
+            if check_password_hash(logged_in_user['pass'],
                                    request.form['password']):
                 session['username'] = request.form['username']
-                session['username'] = True
+                session['logged_in'] = True
                 
                 # If password matches redirect to index
+                flash('You are successfully logged in', 'success')
                 return redirect(url_for('index'))
             # If not show message below and redirect to login 
-            flash('Sorry incorrect password!')
+            flash('Sorry incorrect password!', 'danger')
             
             return redirect(url_for('login'))
         # If none of the form is valid or nothing matches username or password then redirect to login
+        flash('Sorry Your credentials are incorrect (username) please check and try again', 'danger')
     return render_template('login.html', form=form, title='Login')
+    
 
 
 
@@ -132,7 +138,7 @@ def register():
     form = RegistrationForm()
     # Check if user is already registered
     if request.method == 'GET':    
-        if 'logged_in' in session:                        
+        if 'username' in session:                        
             flash('You are already logged in!', 'success')
             return redirect(url_for('index'))
         return render_template('register.html', form=form)
@@ -169,8 +175,10 @@ def register():
 def logout():
     session.clear()
     flash('You are successfully logged out', 'success')
-    return render_template('index')
+    return render_template('index.html')
     
+
+# Error Handling - 404 and 500
 
 
 if __name__ == '__main__':
