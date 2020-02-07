@@ -78,32 +78,26 @@ def findtask():
 
 # Filters
 
-@app.route('/filters', methods=['GET','POST'])
+@app.route('/filters', methods=['GET'])
 def filters():
     """
-    Allows the user to filter through
-    allergen and courses
+    Allows user to filter through course
     """
-    courses = mongo.db.course.find()
-    allergens = mongo.db.allergen.find()
+    
+    tasks = mongo.db.tasks.find()
     filters = {}
     
-    if request.method == 'POST':
-        recipe_course = request.form.get('course')
-        if not recipe_course == None:
-            filters['course'] = recipe_course
-        recipe_allergen = request.form.get('allergen')
-        if not recipe.allergen == None:
-            filters['allergen'] == recipe_allergen  
-            
-        filter_tasks = mongo.db.tasks.find({"$and": [filters, {"allergen": {"$nin": recipe_allergen}}]})  
-        filter_tasks_count = filter_tasks.count()
-        return render_template('search.html', courses=course, allergen=allergen, count=filter_tasks_count)
-    else:
-        tasks = mongo.db.tasks.aggregate([
-            {"$sort": {"recipe_course": -1 }},
-            {"$sort": {"allergen": 1}}
-        ]) 
+    if request.method == "POST":
+        task_course = request.form.get("course")
+        if not task_course == None:
+            filters["course"] = task_course
+                   
+        filter_tasks_count = filter_tasks_count()
+        print(filter_tasks_count)
+        return render_template("filter.html", tasks=filter_tasks, course=course, count=filter_tasks.count)    
+    
+    
+
            
     
 

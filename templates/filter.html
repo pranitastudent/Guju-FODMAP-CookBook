@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-12 mt-5">
+            <h2 class="text-center">FILTERS</h2>
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0 text-center">
+                            <button class="btn btn-link titles" data-toggle="collapse" data-target="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne">
+                                Courses
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body radio">
+
+                            <!-- Form filters -->
+
+                            <form action="/filters" class="form-filters" method="POST">
+                                {% for course in courses %}
+                                <input type="radio" name="course" value="{{ course.course }}" id="{{course.course }}">
+                                {% endfor %}
+                            </form>
+
+                            <!-- End of form filters -->
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0 text-center">
+                            <button class="btn btn-link collapsed text-center titles" data-toggle="collapse"
+                                data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Allergen
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body radio">
+
+                            <input type="radio" name="allergen" value="starter"> None
+                            <input type="radio" name="allergen" value="main"> Nuts
+                            <input type="radio" name="allergen" value="desert"> Egg
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container text-center">
+    <div class="row">
+        <div class="col-sm-6 col-xs-12 text-center">
+            <button class="btn btn-success filter" type="submit">Submit</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Recipes -->
+
+<div class="album py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center pb-2"><strong>RECIPES</strong></h2>
+      <div class="row">
+        {% for task in tasks %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm text-center">
+            <img class="prd card-img-top img-fluid" src="{{ task.recipe_image }}">
+            <div class="card-body">
+              <h3 class="card-text">{{ task.recipe_name}}</h3>
+              <p class="card-text">Course: {{ task.recipe_course}}</p>
+              <p class="card-text">Allergen: {{ task.allergen}}</p>
+              <hr>
+              <a class="text-center" href="{{ url_for('task', task_id=task._id)}}">View Recipe</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  
+
+{% endblock %}
