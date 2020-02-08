@@ -156,6 +156,13 @@ button.btn.btn-link.titles {
      width:90px;
      height:50px;
  }
+
+ /* Footer*/
+
+ .main-footer {
+    background-color: var(--secondary-color);
+    opacity:0.9;
+ }
  
  
  /* Rule */

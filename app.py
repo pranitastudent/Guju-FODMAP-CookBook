@@ -78,27 +78,20 @@ def findtask():
 
 # Filters
 
-@app.route('/filters', methods=['GET'])
-def filters():
-    """
-    Allows user to filter through course
-    """
-    
-    tasks = mongo.db.tasks.find()
-    filters = {}
-    
-    if request.method == "POST":
-        task_course = request.form.get("course")
-        if not task_course == None:
-            filters["course"] = task_course
-                   
-        filter_tasks_count = filter_tasks_count()
-        print(filter_tasks_count)
-        return render_template("filter.html", tasks=filter_tasks, course=course, count=filter_tasks.count)    
-    
-    
+# Filter for course only
 
-           
+@app.route("/filtercourses", methods=['GET', 'POST'])   
+def filtercourses():
+    tasks=mongo.db.tasks
+    if request.method == 'POST':
+        requested_contents = request.form.get("recipe_course")
+        
+        recipes = mongo.db.recipes.find({"recipe_course": requested_contents})
+        return render_template("filters.html", tasks=tasks)
+        
+    return render_template("index.html")
+    
+     
     
 
 # Create Recipe

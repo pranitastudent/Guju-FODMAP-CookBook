@@ -54,17 +54,14 @@
 
           <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
             <div class="card-body radio">
-
-              <!-- Form filters -->
-
-              <form action="/filters" class="form-filters" method="POST">
-                {% for task in tasks %}
-                <input type="radio" name="course" value="{{ task.course }}" id="{{task.course }}">
-                {% endfor %}
-              </form>
-
-              <!-- End of form filters -->
-
+              <form action="{{ url_for('filtercourses')}}" method="POST">
+              <select name="recipe_course" id="recipe_course">
+                <option value="" disabled selected>Choose Course</option>
+                <option value="Starter">Starter</option>
+                <option value="Main">Main</option>
+                <option value="Desert">Desert</option>
+              </select>
+            </form>        
             </div>
           </div>
         </div>
@@ -79,11 +76,9 @@
           </div>
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
             <div class="card-body radio">
-
-              <input type="radio" name="allergen" value="starter"> None
-              <input type="radio" name="allergen" value="main"> Nuts
-              <input type="radio" name="allergen" value="desert"> Egg
-
+              <input type="radio" name="allergen" value="none"> None
+              <input type="radio" name="allergen" value="nuts"> Nuts
+              <input type="radio" name="allergen" value="eggs"> Egg
             </div>
           </div>
         </div>
