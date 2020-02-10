@@ -36,11 +36,11 @@
 
 
 
-<!-- Filter -->
+<!-- Filter Courses -->
 
 
 <div class="container text-center">
-  <h2 class="text-center my-3">Filter</h2>
+  <h2 class="text-center my-3">Filter Courses</h2>
   <div class="row">
     <div class="col-sm-12 col-xs-12">
       <form method="POST" action="{{ url_for('filtercourses') }}" class="search-form">
@@ -49,6 +49,26 @@
           <option value="Main">Main</option> 
           <option value="Starter">Starter</option>
           <option value="Desert">Desert</option>        
+        </select>
+        <button class="btn btn-success search" type="submit">Search</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Filter Allergen -->
+
+<div class="container text-center">
+  <h2 class="text-center my-3">Filter Allergens</h2>
+  <div class="row">
+    <div class="col-sm-12 col-xs-12">
+      <form method="POST" action="{{ url_for('filterallergens') }}" class="search-form">
+        <div class="input-field col-sm-12 col-xs-12 d-flex">
+          <select name="allergen" id="allergen">
+          <option value="None">None</option> 
+          <option value="Eggs">Eggs</option>
+          <option value="Nuts">Nuts</option>        
         </select>
         <button class="btn btn-success search" type="submit">Search</button>
         </div>

@@ -80,13 +80,15 @@ def findtask():
 @app.route('/filtercourses', methods=['GET', 'POST'])
 
 def filtercourses():
-    
+
+# request post method    
     if request.method == "POST":
         for i in request.form:
             if i == "recipe_course":
                 filter_items = []
                 items = request.form.getlist("recipe_course")
                 my_key = request.form
+                # iterate through items
                 for item in items:
                     for key in my_key:
                         filter_items.append({key:item})
@@ -94,9 +96,32 @@ def filtercourses():
  
         print(results.count())
            
-    return render_template('filter.html', results=results, title="Filter")        
-        
-   
+    return render_template('filter.html', results=results, title="Filter")    
+
+
+# Filter Through Allergens    
+
+@app.route('/filterallergens', methods=['GET', 'POST'])
+
+def filterallergens():
+
+# request post method    
+    if request.method == "POST":
+        for i in request.form:
+            if i == "allergen":
+                filter_items = []
+                items = request.form.getlist("allergen")
+                my_key = request.form
+                # iterate through items
+                for item in items:
+                    for key in my_key:
+                        filter_items.append({key:item})
+                        results = mongo.db.tasks.find({'$and': [{'$or': filter_items}]})
+ 
+        print(results.count())
+           
+    return render_template('filter.html', results=results, title="Filter")    
+           
 
 # Create Recipe
 
