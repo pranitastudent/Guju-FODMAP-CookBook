@@ -86,14 +86,14 @@ def filtercourses():
     """
     Allows user to filter through courses
     """
-    filter = request.args.get('filter')
-    filter_results = mongo.db.find({"recipe_course" : {"$regex": filter}}) 
+    tasks = mongo.db.tasks
+    results = tasks.find({'recipe_course' : 'Desert'})
     
-    if filter_results.count():
-        return render_template('filter.html', filter_results=filter_results, filter=filter, title="Filter")
-    else:
-        flash('No recipes were found matching that filter', 'info')
-    return render_template('index.html')      
+    output = ''
+    
+    for r in results:
+        output += r['recipe_course'] + ' - ' + str(r['recipe_name']) + '<br>'
+    return render_template('filter.html', output=output)   
         
 
 # Create Recipe
@@ -101,6 +101,11 @@ def filtercourses():
 # Update Recipe
 
 # Delete Recipe
+    
+
+# Up votes
+
+
     
     
     
