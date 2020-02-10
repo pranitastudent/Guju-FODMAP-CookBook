@@ -59,8 +59,8 @@ def task(task_id):
 @app.route('/findtask')
 def findtask():
     """
-    Allows user to perform full exact matches
-    ro recipes
+    Allows user to perform case insensitive matches
+    for recipe names
     """
     query = request.args.get('query')
    
@@ -80,6 +80,10 @@ def findtask():
 @app.route('/filtercourses', methods=['GET', 'POST'])
 
 def filtercourses():
+    """
+    Allows user to filter through
+    courses
+    """
 
 # request post method    
     if request.method == "POST":
@@ -104,6 +108,10 @@ def filtercourses():
 @app.route('/filterallergens', methods=['GET', 'POST'])
 
 def filterallergens():
+    """
+    Allows user to filter through
+    allergens
+    """
 
 # request post method    
     if request.method == "POST":
@@ -132,11 +140,15 @@ def filterallergens():
 
 # Up votes
 
-
-
-
+@app.route('/upvotes/<task_id>', methods=['POST'])
+def upvotes(task_id):
     
-    
+    mongo.db.tasks.update_one(
+        {'_id': ObjectId(task_id)},
+        {'$inc': {'upvotes': 1}})
+    return redirect(url_for('task', task_id=task_id)) 
+      
+  
     
 # About
 
