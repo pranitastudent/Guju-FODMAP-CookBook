@@ -1,9 +1,10 @@
 {% extends 'base.html'%}
+
 {% block content %}
 
 <!-- Filter -->
 
-div class="container">
+<div class="container">
   <div class="row">
     <div class="col-xs-12 col-md-12 mt-5">
       <h2 class="text-center">FILTERS</h2>
@@ -22,51 +23,55 @@ div class="container">
               <form action="{{ url_for('filtercourses')}}" method="GET">
               <select name="recipe_course" id="recipe_course">
                 <option value="" disabled selected>Choose Course</option>
-                <option value="Desert">Desert</option>
-              </select>
-            </form>        
+                <option value="Main" id="Main" >Main</option>
+                <option value="Starter" id="Starter" >Starter</option>
+                <option value="Desert" id="Desert" >Desert</option>
+              </select>             
+            </form>    
+            <div class="container text-center">
+              <div class="row">
+                <div class="col-sm-6 col-xs-12 text-center">
+                  <button class="btn btn-success filter" type="submit">Submit</button>
+                </div>
+              </div>
+            </div>     
             </div>
           </div>
         </div>       
      </div>
   </div>
 </div>
-
-<div class="container text-center">
-  <div class="row">
-    <div class="col-sm-6 col-xs-12 text-center">
-      <button class="btn btn-success filter" type="submit">Submit</button>
-    </div>
-  </div>
-</div>  
+</div>
+ 
   
   <!-- Results -->
   
   
-  <div class="album py-5 bg-light">
-      <div class="container">
-        <h2 class="text-center pb-2"><strong>RESULTS</strong></h2>
-        <div class="row">
-          {% for r in results  %} 
-           <div class="col-md-4">         
-            <div class="card mb-4 shadow-sm text-center">             
-              <img class="prd card-img-top img-fluid" src="{{ r.recipe_image }}"></a>
-              <div class="card-body">
-                <h3 class="card-text">{{ r.recipe_name}}</h3>
-                <p class="card-text">Course: {{ r.recipe_course}}</p>
-                <p class="card-text">Allergen: {{ r.allergen}}</p>          
-                <hr>            
-                <a class="text-center" href=" {{ url_for('task', task_id=r._id) }}">View Recipe</a>            
-               </div>
+  <
+    <!-- Results -->
+    
+    
+    <div class="album py-5 bg-light">
+        <div class="container">
+          <h2 class="text-center pb-2"><strong>RESULTS</strong></h2>
+          <div class="row">
+            {% for result in results %} 
+             <div class="col-md-4">         
+              <div class="card mb-4 shadow-sm text-center">             
+                <img class="prd card-img-top img-fluid" src="{{ result.recipe_image }}"></a>
+                <div class="card-body">
+                  <h3 class="card-text">{{ result.recipe_name}}</h3>
+                  <p class="card-text">Course: {{ result.recipe_course}}</p>
+                  <p class="card-text">Allergen: {{ result.allergen}}</p>          
+                  <hr>            
+                  <a class="text-center" href=" {{ url_for('task', task_id=result._id) }}">View Recipe</a>            
+                 </div>
+              </div>
             </div>
-          </div>
-          {% endfor %}
-         </div>
+            {% endfor %}
+           </div>
+        </div>
       </div>
-    </div>
   
-  
-  {% endblock %}
-
 
 {% endblock %}

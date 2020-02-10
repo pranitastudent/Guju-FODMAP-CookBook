@@ -25,9 +25,6 @@ app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY')
 
 mongo = PyMongo(app)
 
-# Flask Login
-
-
 
 # Routes
 
@@ -80,21 +77,23 @@ def findtask():
 
 # Filter for course only
 
-@app.route("/filtercourses") 
-  
+@app.route('/filtercourses')
+
 def filtercourses():
-    """
-    Allows user to filter through courses
-    """
-    tasks = mongo.db.tasks
-    results = tasks.find({'recipe_course' : 'Desert'})
+    query = request.args.get('query')
     
-    output = ''
-    
-    for r in results:
-        output += r['recipe_course'] + ' - ' + str(r['recipe_name']) + '<br>'
-    return render_template('filter.html', output=output)   
+    results = mongo.db.tasks.find({"recipe_course" : {"$regex": "query", "$options": "i"}})
+ 
+    if results.count():
+        return render_template('filter.html', results=results, query=query, title="Filter")        
+    else:
+        flash('No results were found', 'info') 
         
+    return render_template('index.html')
+
+
+    
+   
 
 # Create Recipe
 
