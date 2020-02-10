@@ -37,7 +37,9 @@
 
 <!-- Filters -->
 
-<div class="container">
+<!-- Filter -->
+
+div class="container">
   <div class="row">
     <div class="col-xs-12 col-md-12 mt-5">
       <h2 class="text-center">FILTERS</h2>
@@ -51,14 +53,11 @@
               </button>
             </h5>
           </div>
-
           <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
             <div class="card-body radio">
-              <form action="{{ url_for('filtercourses')}}" method="POST">
+              <form action="{{ url_for('filtercourses')}}" method="GET">
               <select name="recipe_course" id="recipe_course">
                 <option value="" disabled selected>Choose Course</option>
-                <option value="Starter">Starter</option>
-                <option value="Main">Main</option>
                 <option value="Desert">Desert</option>
               </select>
             </form>        
@@ -68,7 +67,6 @@
      </div>
   </div>
 </div>
-</div>
 
 <div class="container text-center">
   <div class="row">
@@ -76,8 +74,7 @@
       <button class="btn btn-success filter" type="submit">Submit</button>
     </div>
   </div>
-</div>
-
+</div>  
 
 <!-- Recipes -->
 
