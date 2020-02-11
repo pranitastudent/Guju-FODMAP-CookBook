@@ -10,8 +10,7 @@
         <h4 class="display-2  mt-5 pt-5 pr-3 text-center text-white main-title">Your favourite Gujarati dishes The
           FODMAP Way!</h4>
         <hr class="rule"><br>
-        <p class="lead text-white">January 2020</p>
-        <a href="#" class="btn btn-success btn-lg text-white">Buy kitchen tools!</a>
+        <p class="lead text-white"> Created January 2020</p>
       </div>
     </div>
   </div>
@@ -35,47 +34,43 @@
 </div>
 
 
+<!-- Filters - Courses and Allergens -->
 
-<!-- Filter Courses -->
-
-
-<div class="container text-center">
-  <h2 class="text-center my-3">Filter Courses</h2>
+<section class="container my-5">
   <div class="row">
-    <div class="col-sm-12 col-xs-12">
-      <form method="POST" action="{{ url_for('filtercourses') }}" class="search-form">
-        <div class="input-field col-sm-12 col-xs-12 d-flex">
-          <select name="recipe_course" id="recipe_course">
-          <option value="Main">Main</option> 
-          <option value="Starter">Starter</option>
-          <option value="Desert">Desert</option>        
-        </select>
-        <button class="btn btn-success search" type="submit">Search</button>
+    <div class="col-sm-6 col-xs-12 mx-auto">
+      <div class="card">
+        <div class="card-heading bg-dark text-white">
+          <h4 class="text-center p-3">Filters</h4>
         </div>
-      </form>
+        <div class="card-body">
+          <h3 class="text-center">Courses</h3>
+          <form method="POST" action="{{ url_for('filtercourses') }}" class="search-form">
+            <div class="input-field col-sm-12 col-xs-12  mx-auto">
+              <select name="recipe_course" id="recipe_course" class="select-box">
+                <option value="Main">Main</option>
+                <option value="Starter">Starter</option>
+                <option value="Desert">Desert</option>
+              </select>
+              <button class="btn btn-success search" type="submit">Search</button>
+            </div>
+          </form> <br><br>
+          <h3 class="text-center">Allergens</h3>
+          <form method="POST" action="{{ url_for('filterallergens') }}" class="search-form">
+            <div class="input-field col-sm-12 col-xs-12  mx-auto">
+              <select name="allergen" id="allergen" class="select-box">
+                <option value="None">None</option>
+                <option value="Eggs">Eggs</option>
+                <option value="Nuts">Nuts</option>
+              </select>
+              <button class="btn btn-success search" type="submit">Search</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-
-<!-- Filter Allergen -->
-
-<div class="container text-center">
-  <h2 class="text-center my-3">Filter Allergens</h2>
-  <div class="row">
-    <div class="col-sm-12 col-xs-12">
-      <form method="POST" action="{{ url_for('filterallergens') }}" class="search-form">
-        <div class="input-field col-sm-12 col-xs-12 d-flex">
-          <select name="allergen" id="allergen">
-          <option value="None">None</option> 
-          <option value="Eggs">Eggs</option>
-          <option value="Nuts">Nuts</option>        
-        </select>
-        <button class="btn btn-success search" type="submit">Search</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+</section>
 
 <!-- Recipes -->
 

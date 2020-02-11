@@ -2,70 +2,66 @@
 
 {% block content %}
 
+<!-- Filters - Courses and Allergens -->
 
-<!-- Filter Courses -->
-
-<div class="container text-center">
-  <h2 class="text-center my-3">Filter Courses</h2>
+<section class="container my-5">
   <div class="row">
-    <div class="col-sm-12 col-xs-12">
-      <form method="POST" action="{{ url_for('filtercourses') }}" class="search-form">
-        <div class="input-field col-sm-12 col-xs-12 d-flex">
-          <select name="recipe_course" id="recipe_course">
-          <option value="Main">Main</option> 
-          <option value="Starter">Starter</option>
-          <option value="Desert">Desert</option>        
-        </select>
-        <button class="btn btn-success search" type="submit">Search</button>
+    <div class="col-sm-6 col-xs-12 mx-auto">
+      <div class="card">
+        <div class="card-heading bg-dark text-white">
+          <h4 class="text-center p-3">Filters</h4>
         </div>
-      </form>
+        <div class="card-body">
+          <h3 class="text-center">Courses</h3>
+          <form method="POST" action="{{ url_for('filtercourses') }}" class="search-form">
+            <div class="input-field col-sm-12 col-xs-12  mx-auto">
+              <select name="recipe_course" id="recipe_course"  class="select-box">
+                <option value="Main">Main</option>
+                <option value="Starter">Starter</option>
+                <option value="Desert">Desert</option>
+              </select>
+              <button class="btn btn-success search" type="submit">Search</button>
+            </div>
+          </form> <br><br>
+          <h3 class="text-center">Allergens</h3>
+          <form method="POST" action="{{ url_for('filterallergens') }}" class="search-form">
+            <div class="input-field col-sm-12 col-xs-12 mx-auto">
+              <select name="allergen" id="allergen" class="select-box">
+                <option value="None">None</option>
+                <option value="Eggs">Eggs</option>
+                <option value="Nuts">Nuts</option>
+              </select>
+              <button class="btn btn-success search" type="submit">Search</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-
-<!-- Filter Allergens -->
-
-<div class="container text-center">
-  <h2 class="text-center my-3"> Filter Allergens</h2>
-  <div class="row">
-    <div class="col-sm-12 col-xs-12">
-      <form method="POST" action="{{ url_for('filterallergens') }}" class="search-form">
-        <div class="input-field col-sm-12 col-xs-12 d-flex">
-          <select name="allergen" id="allergen">
-          <option value="None">None</option> 
-          <option value="Eggs">Eggs</option>
-          <option value="Nuts">Nuts</option>        
-        </select>
-        <button class="btn btn-success search" type="submit">Search</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-  
 <!-- Results -->
-    
-    
+
+
 <div class="album py-5 bg-light">
   <div class="container">
     <h2 class="text-center pb-2"><strong>RESULTS</strong></h2>
     <div class="row">
-      {% for result in results %} 
-       <div class="col-md-4">         
-        <div class="card mb-4 shadow-sm text-center">             
+      {% for result in results %}
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm text-center">
           <img class="prd card-img-top img-fluid" src="{{ result.recipe_image }}"></a>
           <div class="card-body">
             <h3 class="card-text">{{ result.recipe_name}}</h3>
             <p class="card-text">Course: {{ result.recipe_course}}</p>
-            <p class="card-text">Allergen: {{ result.allergen}}</p>          
-            <hr>            
-            <a class="text-center" href=" {{ url_for('task', task_id=result._id) }}">View Recipe</a>            
-           </div>
+            <p class="card-text">Allergen: {{ result.allergen}}</p>
+            <hr>
+            <a class="text-center" href=" {{ url_for('task', task_id=result._id) }}">View Recipe</a>
+          </div>
         </div>
       </div>
       {% endfor %}
-     </div>
+    </div>
   </div>
 </div>
 

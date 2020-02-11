@@ -37,9 +37,9 @@
            </div>
         <div class="col-sm-6 col-xs-12 mt-5 pb-3">
             <img class=" img-photo" src="{{ task.recipe_image }}" alt=""> 
-
-            <form action="{{url_for('upvotes', task_id=task._id)}}", method="POST">
-                <button class = "btn btn-primary" type="submit"><i class="far fa-thumbs-up"></i></button>
+             <h3 class="my-3 text-center">Upvotes</h3>
+            <form action="{{url_for('upvotes', task_id=task._id)}}" class="text-center", method="POST">
+                <button type="submit" class="upvotes mt-3"><i class="fa fa-thumbs-up fa-3x thumb"></i></button>
                 {{task.upvotes}}
             </form>
             <h4 class="my-3">Description of Dish</h4>
