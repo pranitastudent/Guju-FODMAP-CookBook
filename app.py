@@ -166,6 +166,8 @@ def create_task():
             'instruction4' : request.form['instruction4'],
             'instruction5' : request.form['instruction5'],
             'instruction6' : request.form['instruction6'],
+            'username': session['username'].title(),
+            
             
         
          })
@@ -184,21 +186,22 @@ def update_task(task_id):
     Function to update a recipe
     """
     if 'logged_in' not in session:  # Check if its a logged in user
-        flash('Sorry, only logged in users can create recipes. Please register')
+        flash('Sorry, only logged in users can edit there own recipes. Please register', 'info')
         return redirect(url_for('index'))
     user = mongo.db.user.find_one({"name": session['username'].title()})
-    chosen_task = mongo.do.tasks.find_one({'_id': ObjectId(task_id)})
+    recipe_task = mongo.db.tasks.find_one({'_id': ObjectId(task_id)})
     form = RecipeForm()
     
     # If user created then they can edit
-    if user['name'].title() == chosen_task['username'].title():
+    if user['name'].title() == recipe_task['username'].title():       
+      
         if request.method == 'GET':
-            form = RecipeForm(data=chosen_task)
-            return render_template('edit_recipe.html', tasks=chosen_task, form=form, title='Edit Recipe')
+            form = RecipeForm(data=recipe_task)
+            return render_template('edit_recipe.html', tasks=recipe_task, form=form, title='Edit Recipe')
         if form.validate_on_submit():
-            tasks = mongo.db.tasks
-            tasks.update_one({
-                '_id': ObjectId('task_id'),
+            task = mongo.db.tasks
+            task.update_one({
+                '_id': ObjectId('tasks_id'),
             }, {
                 '$set': {
                             'recipe_name' : request.form['recipe_name'],
@@ -220,7 +223,8 @@ def update_task(task_id):
                                                                     }})
             flash('Your Recipe has been updated', 'info')
             return redirect(url_for('task', task_id=task_id))
-    flash('Sorry this is not your recipe to edit', 'danger')
+        else:
+            flash('Sorry this is not your recipe to edit', 'danger')
     return redirect(url_for('task', task_id=task_id))           
                                           
         
