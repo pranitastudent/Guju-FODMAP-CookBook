@@ -21,6 +21,9 @@ class LoginForm(FlaskForm):
 class RecipeForm(FlaskForm):
     recipe_name = StringField('Recipe Name', validators=[DataRequired()])
     recipe_image = StringField('Enter Image Address Link', validators=[DataRequired()]) 
+    ingredients = StringField('Enter Ingredients', validators=[DataRequired()])
+    recipe_course = StringField('Choose Main, Starter or Desert', validators=[DataRequired()])
+    allergen = StringField('Choose None, Nuts or Eggss', validators=[DataRequired()])
     serving_size = IntegerField('Serving Size', validators=[DataRequired()]) 
     calories = IntegerField('Calories', validators=[DataRequired()]) 
     description = TextField('Enter Description', validators=[DataRequired()])

@@ -145,24 +145,18 @@ def create_task():
         return redirect(url_for('index'))
 
     form = RecipeForm(request.form)  # Initialise the form
-    print(form)
-    
     user = mongo.db.user.find_one({"name": session['username'].title()})
     
-    if form.validate_on_submit():  
-       
-       print(form.validate_on_submit)
-        
+    if form.validate_on_submit():  # Insert new recipe if form is submitted
        tasks = mongo.db.tasks
-      
-       # inserting into dict as required by mongodb
        tasks.insert_one({
             'recipe_name' : request.form['recipe_name'],
             'recipe_image' : request.form['recipe_image'],
+            'ingredients' : request.form['ingredients'],
             'serving_size' : request.form['serving_size'],
+            'recipe_course' : request.form['recipe_course'],
+            'allergen' : request.form['allergen'],
             'calories' : request.form['calories'],
-            'allergen': request.form['allergen'],
-            'course': request.form['course'],
             'description' : request.form['description'],
             'cooking_time' : request.form['cooking_time'],
             'instruction' : request.form['instruction'],
@@ -172,15 +166,12 @@ def create_task():
             'instruction4' : request.form['instruction4'],
             'instruction5' : request.form['instruction5'],
             'instruction6' : request.form['instruction6'],
-            'username': session['username'].title(),
             
         
          })
        flash ('Your Recipe has been added successfully', 'success')
        return redirect(url_for('index'))
     return render_template('add_recipe.html', form=form, title="Add Recipe")
-                
-            
   
 
 
