@@ -166,6 +166,7 @@ def create_task():
             'instruction4' : request.form['instruction4'],
             'instruction5' : request.form['instruction5'],
             'instruction6' : request.form['instruction6'],
+            'username': session['username'].title(),
             
         
          })
