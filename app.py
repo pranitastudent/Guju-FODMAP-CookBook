@@ -178,6 +178,53 @@ def create_task():
 
 # Update Recipe
 
+@app.route('/update_task/<task_id>', methods=['GET','POST'])
+def update_task(task_id):
+    """
+    Function to update a recipe
+    """
+    if 'logged_in' not in session:  # Check if its a logged in user
+        flash('Sorry, only logged in users can create recipes. Please register')
+        return redirect(url_for('index'))
+    user = mongo.db.user.find_one({"name": session['username'].title()})
+    chosen_task = mongo.do.tasks.find_one({'_id': ObjectId(task_id)})
+    form = RecipeForm()
+    
+    # If user created then they can edit
+    if user['name'].title() == chosen_task['username'].title():
+        if request.method == 'GET':
+            form = RecipeForm(data=chosen_task)
+            return render_template('edit_recipe.html', tasks=chosen_task, form=form, title='Edit Recipe')
+        if form.validate_on_submit():
+            tasks = mongo.db.tasks
+            tasks.update_one({
+                '_id': ObjectId('task_id'),
+            }, {
+                '$set': {
+                            'recipe_name' : request.form['recipe_name'],
+                            'recipe_image' : request.form['recipe_image'],
+                            'ingredients' : request.form['ingredients'],
+                            'serving_size' : request.form['serving_size'],
+                            'recipe_course' : request.form['recipe_course'],
+                            'allergen' : request.form['allergen'],
+                            'calories' : request.form['calories'],
+                            'description' : request.form['description'],
+                            'cooking_time' : request.form['cooking_time'],
+                            'instruction' : request.form['instruction'],
+                            'instruction1' : request.form['instruction1'],
+                            'instruction2' : request.form['instruction2'],
+                            'instruction3' : request.form['instruction3'],
+                            'instruction4' : request.form['instruction4'],
+                            'instruction5' : request.form['instruction5'],
+                            'instruction6' : request.form['instruction6'],
+                                                                    }})
+            flash('Your Recipe has been updated', 'info')
+            return redirect(url_for('task', task_id=task_id))
+    flash('Sorry this is not your recipe to edit', 'danger')
+    return redirect(url_for('task', task_id=task_id))           
+                                          
+        
+
 # Delete Recipe
 
 
