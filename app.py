@@ -138,7 +138,7 @@ def filterallergens():
 # Add Recipe
 
 @app.route('/create_task', methods = ['GET', 'POST'])
-def insert_task():
+def create_task():
     """
     Only logged in users can
     add recipes
