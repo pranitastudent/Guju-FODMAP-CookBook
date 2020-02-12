@@ -6,7 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_login import login_required
 from flask_pymongo import PyMongo, pymongo
-from forms import RegistrationForm, LoginForm
+from forms import RegistrationForm, LoginForm, RecipeForm
 from bson.objectid import ObjectId
 from flask import session
 
@@ -148,33 +148,35 @@ def create_task():
         flash('Sorry only logged in users can create recipes. Please register or login', 'info')
         return redirect(url_for('login'))
     form = RecipeForm(request.form)
+    print(form)
     user = mongo.db.user.find_one({"name": session['username'].title()})
     
     # If validated form is submitted
     if form.validate_on_submit():
-        tasks = mongo.db.tasks
-        tasks.insert_one({
-            'recipe_name' : request.form['recipe_name'],
-            'recipe_image' : request.form['recipe_image'],
-            'serving_size' : request.form['serving_size'],
-            'calories' : request.form['calories'],
-            'description' : request.form['description'],
-            'cooking_time' : request.form['cooking_time'],
-            'instruction' : request.form['instruction'],
-            'instruction1' : request.form['instruction1'],
-            'instruction2' : request.form['instruction2'],
-            'instruction3' : request.form['instruction3'],
-            'instruction4' : request.form['instruction4'],
-            'instruction5' : request.form['instruction5'],
-            'instruction6' : request.form['instruction6'],
-            'username': session['username'].title(),
-             })
-            flash ('Your Recipe has been added successfully', 'success')
-            return redirect(url_for('index'))
-        return render_template('add_recipe.html', form=form, title='Add Recipe')
+       print(form.validate_on_submit) 
+       tasks = mongo.db.tasks
+       tasks.insert_one({
+            'recipe_name' : request.form.get['recipe_name'],
+            'recipe_image' : request.form.get['recipe_image'],
+            'serving_size' : request.form.get['serving_size'],
+            'calories' : request.form.get['calories'],
+            'description' : request.form.get['description'],
+            'cooking_time' : request.form.get['cooking_time'],
+            'instruction' : request.form.get['instruction'],
+            'instruction1' : request.form.get['instruction1'],
+            'instruction2' : request.form.get['instruction2'],
+            'instruction3' : request.form.get['instruction3'],
+            'instruction4' : request.form.get['instruction4'],
+            'instruction5' : request.form.get['instruction5'],
+            'instruction6' : request.form.get['instruction6'],
             
+            })
+       print(tasks.insert_one)
+       flash ('Your Recipe has been added successfully', 'success')
+       return redirect(url_for('index'))
+    return render_template('add_recipe.html', form=form, title='Add Recipe')            
             
-        })    
+  
 
 
 

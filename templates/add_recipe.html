@@ -1,54 +1,71 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h2 class="text-center">Add Recipe</h2>
-<div class="row">
-    <div class="container">
+
+<section class="container my-4">
+    <div class="row">
         <div class="col-sm-6 col-xs-12 mx-auto">
-            <form action="{{ url_for('create_task')}}" method="POST" class="add-recipe">
-                <label for="recipe_name">Recipe Name: </label>
-                <input type="text" class="form-control" name="recipe_name" id="recipe_name" placeholder="Recipe Name"
-                    minlength=5 required>
-                <label for="recipe_image">Recipe Image: </label>
-                <input type="text" class="form-control" name="recipe_image" id="recipe_image"
-                    placeholder="https://www.recipeimage.com" minlength=5 required>
-                <label for="serving_size">Serving Size: </label>
-                <input type="number" class="form-control" name="serving_size" id="serving_size"
-                    placeholder="Serving Size" minlength=5 required>
-                <label for="calories">Calories: </label>
-                <input type="number" class="form-control" name="calories" id="calories" placeholder="Calories"
-                    minlength=1 required>
-                <label for="cooking_time">Cooking Time: </label>
-                <input type="number" class="form-control" name="cooking_time" id="cooking_time"
-                    placeholder="Cooking Time" minlength=5 required>
-                <small><strong>Please note a maximum of 7 instruction steps can be inserted for your
-                        recipe<strong></small>
-                <label for="Instrution">Instructions: </label>
-                <input type="text" class="form-control" name="instruction" id="instruction"
-                    placeholder="Instruction One" minlength=8 required>
-                <label for="Instrution">Instructions: </label>
-                <input type="text" class="form-control" name="instruction1" id="instruction1"
-                    placeholder="Instruction Two" minlength=8 required>
-                <label for="Instrution">Instructions: </label>
-                <input type="text" class="form-control" name="instruction2" id="instruction2"
-                    placeholder="Instruction Three" minlength=8 required>
-                <label for="Instrution">Instructions: </label>
-                <input type="text" class="form-control" name="instruction3" id="instruction3"
-                    placeholder="Instruction Four" minlength=8 required>
-                <label for="Instrution">Instructions: </label>
-                <input type="text" class="form-control" name="instruction4" id="instruction4"
-                    placeholder="Instruction Five" minlength=8 required>
-                <label for="Instrution">Instructions: </label>
-                <input type="text" class="form-control" name="instruction5" id="instruction5"
-                    placeholder="Instruction Six" minlength=8 required>
-                <label for="Instrution">Instructions: </label>
-                <input type="text" class="form-control" name="instruction6" id="instruction6"
-                    placeholder="Instruction Seven" minlength=8 required>
-            </form>
+            <div class="card">
+                <div class="card-heading bg-primary text-white">
+                    <h2 class="text-center p-3">Add Recipe</h2>
+                </div>
+                <div class="card-body">
+                    <form action="{{ url_for('create_task')}}" method="POST" class="add-recipe">
+                        <label for="recipe_name">Recipe Name: </label>
+                        <input type="text" class="form-control" name="recipe_name" id="recipe_name"
+                            placeholder="Recipe Name" minlength=5 required><br>
+
+                        <label for="recipe_image">Recipe Image: </label>
+                        <input type="text" class="form-control" name="recipe_image" id="recipe_image"
+                            placeholder="https://www.recipeimage.com" minlength=5 required><br>
+
+                        <label for="serving_size">Serving Size: </label>
+                        <input type="number" class="form-control" name="serving_size" id="serving_size"
+                            placeholder="Serving Size" minlength=5 required><br>
+
+                        <label for="calories">Calories: </label>
+                        <input type="number" class="form-control" name="calories" id="calories" placeholder="Calories"
+                            minlength=1 required><br>
+
+                        <label for="cooking_time">Cooking Time: </label>
+                        <input type="number" class="form-control" name="cooking_time" id="cooking_time"
+                            placeholder="Cooking Time" minlength=5 required><br>
+
+                        <small>Please note a maximum of 7 instruction steps can be inserted for your recipe</small><br>
+
+                        <label for="Instruction">Instructions: </label>
+                        <input type="text" class="form-control" name="instruction" id="instruction"
+                            placeholder="Instruction One" minlength=8 required><br>
+
+                        <label for="Instrution1">Instructions: </label>
+                        <input type="text" class="form-control" name="instruction1" id="instruction1"
+                            placeholder="Instruction Two" minlength=8 required><br>
+
+                        <label for="Instrution2">Instructions: </label>
+                        <input type="text" class="form-control" name="instruction2" id="instruction2"
+                            placeholder="Instruction Three" minlength=8 required><br>
+
+                        <label for="Instrution3">Instructions: </label>
+                        <input type="text" class="form-control" name="instruction3" id="instruction3"
+                            placeholder="Instruction Four" minlength=8 required><br>
+
+                        <label for="Instrution4">Instructions: </label>
+                        <input type="text" class="form-control" name="instruction4" id="instruction4"
+                            placeholder="Instruction Five" minlength=8 required><br>
+
+                        <label for="Instrution5">Instructions: </label>
+                        <input type="text" class="form-control" name="instruction5" id="instruction5"
+                            placeholder="Instruction Six" minlength=8 required><br>
+
+                        <label for="Instrution6">Instructions: </label>
+                        <input type="text" class="form-control" name="instruction6" id="instruction6"
+                            placeholder="Instruction Seven" minlength=8 required>
+                        <input type="submit" class="btn btn-success" value="Submit">
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-
-
+</section>
 
 {% endblock %}
