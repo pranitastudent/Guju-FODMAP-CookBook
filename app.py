@@ -169,6 +169,9 @@ def insert_task():
             'instruction6' : request.form['instruction6'],
             'username': session['username'].title(),
              })
+            flash ('Your Recipe has been added successfully', 'success')
+            return redirect(url_for('index'))
+        return render_template('add_recipe.html', form=form, title='Add Recipe')
             
             
         })    
