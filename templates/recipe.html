@@ -54,13 +54,27 @@
       <div class="col-sm-12 col-xs-12 mb-5">
         <h1 class="text-center mt-3 pb-3">METHOD</h1>
         <ol class="pl-3">
+        {% if instruction %}
         <li class="m2 pl-2">{{task.instruction}}</li><br>
+        {% endif %}
+        {% if instruction1 %}
         <li class="m2 pl-2">{{task.instruction1}}</li><br> 
-        <li class="m2 pl-2">{{task.instruction2}}</li><br> 
+        {% endif %}
+        {% if instruction2 %}
+        <li class="m2 pl-2">{{task.instruction2}}</li><br>
+        {% endif %}
+        {% if instruction3 %} 
         <li class="m2 pl-2">{{task.instruction3}}</li><br>
+        {% endif %}
+        {% if instruction4 %}
         <li class="m2 pl-2">{{task.instruction4}}</li><br> 
+        {% endif %}
+        {% if instruction5 %}
         <li class="m2 pl-2">{{task.instruction5}}</li><br> 
-        <li class="m2 pl-2">{{task.instruction6}}</li>   
+        {% endif %}
+        {% if instruction6 %}
+        <li class="m2 pl-2">{{task.instruction6}}</li> 
+        {% endif %}  
                        
         </ol>
         </div>

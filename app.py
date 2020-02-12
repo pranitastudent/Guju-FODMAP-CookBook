@@ -135,14 +135,30 @@ def filterallergens():
     return render_template('filter.html', results=results, title="Filter")
 
 
-# Create Recipe
+# Add Recipe
+
+@app.route('/create_task', methods = ['GET', 'POST'])
+def insert_task():
+    """
+    Only logged in users can
+    add recipes
+    """
+    
+    if 'logged_in' not in session:
+        flash('Sorry only logged in users can create recipes. Please register or login', 'info')
+        return redirect(url_for('login'))
+    form = RecipeForm(request.form)
+    user = mongo.db.user.find_one({"name": session['username'].title()})
+        
+
+
 
 # Update Recipe
 
 # Delete Recipe
 
 
-# Up votes
+# Upvotes
 
 @app.route('/upvotes/<task_id>', methods=['POST'])
 def upvotes(task_id):
