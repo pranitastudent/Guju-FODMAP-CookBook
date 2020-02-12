@@ -149,7 +149,7 @@ def create_task():
     
     user = mongo.db.user.find_one({"name": session['username'].title()})
     
-    if form.validate_on_submit():  # Insert new recipe if form is submitted
+    if form.validate_on_submit():  
        
        print(form.validate_on_submit)
         
@@ -157,19 +157,21 @@ def create_task():
       
        # inserting into dict as required by mongodb
        tasks.insert_one({
-            'recipe_name' : request.form.get['recipe_name'],
-            'recipe_image' : request.form.get['recipe_image'],
-            'serving_size' : request.form.get['serving_size'],
-            'calories' : request.form.get['calories'],
-            'description' : request.form.get['description'],
-            'cooking_time' : request.form.get['cooking_time'],
-            'instruction' : request.form.get['instruction'],
-            'instruction1' : request.form.get['instruction1'],
-            'instruction2' : request.form.get['instruction2'],
-            'instruction3' : request.form.get['instruction3'],
-            'instruction4' : request.form.get['instruction4'],
-            'instruction5' : request.form.get['instruction5'],
-            'instruction6' : request.form.get['instruction6'],
+            'recipe_name' : request.form['recipe_name'],
+            'recipe_image' : request.form['recipe_image'],
+            'serving_size' : request.form['serving_size'],
+            'calories' : request.form['calories'],
+            'allergen': request.form['allergen'],
+            'course': request.form['course'],
+            'description' : request.form['description'],
+            'cooking_time' : request.form['cooking_time'],
+            'instruction' : request.form['instruction'],
+            'instruction1' : request.form['instruction1'],
+            'instruction2' : request.form['instruction2'],
+            'instruction3' : request.form['instruction3'],
+            'instruction4' : request.form['instruction4'],
+            'instruction5' : request.form['instruction5'],
+            'instruction6' : request.form['instruction6'],
             'username': session['username'].title(),
             
         

@@ -11,7 +11,6 @@
                 </div>
                 <div class="card-body">
                     <form action="{{ url_for('create_task')}}" method="POST" class="add-recipe">
-                        {{ form.csrf_token }}
                         <label for="recipe_name">Recipe Name: </label>
                         <input type="text" class="form-control" name="recipe_name" id="recipe_name"
                             placeholder="Recipe Name" minlength=5 required><br>
@@ -27,7 +26,15 @@
                         <label for="serving_size">Serving Size: </label>
                         <input type="number" class="form-control" name="serving_size" id="serving_size"
                             placeholder="Serving Size" minlength=5 required><br>
+                        
+                        <label for="allergen">Allergen: </label>
+                        <input type="text" class="form-control" name="allergen" id="allergen"
+                                placeholder="Enter Allergen: None, Eggs or Nuts" minlength=5 required><br>
 
+                        <label for="allergen">Course: </label>
+                        <input type="text" class="form-control" name="course" id="course"
+                                placeholder="Enter Starter, Main or Desert" minlength=5 required><br>
+                        
                         <label for="calories">Calories: </label>
                         <input type="number" class="form-control" name="calories" id="calories" placeholder="Calories"
                             minlength=1 required><br>
