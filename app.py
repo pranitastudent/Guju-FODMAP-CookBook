@@ -141,7 +141,7 @@ def filterallergens():
 def create_task():
     """Create a new recipe to db collection"""
     if 'logged_in' not in session:  # Check if its a logged in user
-        flash('Sorry, only logged in users can create recipes. Please register')
+        flash('Sorry, only logged in users can create recipes. Please register/login','info')
         return redirect(url_for('index'))
 
     form = RecipeForm(request.form)  # Initialise the form
@@ -184,9 +184,12 @@ def create_task():
 def update_task(task_id):
     # Check if user is logged in
     if 'logged_in' not in session:  # Check if its a logged in user
-        flash('Sorry, only logged in users can create recipes. Please register')
+        flash('Sorry, only logged in users can edit there own recipes. Please login', 'info')
         return redirect(url_for('index'))
-    
+    else:
+        flash('Sorry not your recipe to edit', 'danger')
+        return redirect(url_for('index'))
+       
     user = mongo.db.user.find_one({"name": session['username'].title()})
     the_task = mongo.db.tasks.find_one_or_404({'_id': ObjectId(task_id)})
     form = RecipeForm()
@@ -201,7 +204,7 @@ def update_task(task_id):
         if form.validate_on_submit():
             task = mongo.db.tasks
             task.update_one({
-                '_id': ObjectId('task_id'),
+                '_id': ObjectId(task_id),
             }, {
                 '$set': {
                             'recipe_name' : request.form['recipe_name'],
@@ -223,7 +226,7 @@ def update_task(task_id):
                                                                     }})
             flash('Your Recipe has been updated', 'info')
             return redirect(url_for('task', task_id=task_id))  
-    flash('Sorry not your recipe to edit')
+    flash('Sorry not your recipe to edit', 'danger')
     return redirect(url_for('task', task_id=task_id))       
                                           
         
