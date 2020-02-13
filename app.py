@@ -188,6 +188,7 @@ def update_task(task_id):
     if 'logged_in' not in session:  # Check if its a logged in user
         flash('Sorry, only logged in users can edit there own recipes. Please register', 'info')
         return redirect(url_for('index'))
+    # Find user in db
     user = mongo.db.user.find_one({"name": session['username'].title()})
     recipe_task = mongo.db.tasks.find_one({'_id': ObjectId(task_id)})
     form = RecipeForm()
@@ -198,6 +199,10 @@ def update_task(task_id):
         if request.method == 'GET':
             form = RecipeForm(data=recipe_task)
             return render_template('edit_recipe.html', tasks=recipe_task, form=form, title='Edit Recipe')
+        else:
+            flash('Sorry this is not your recipe to edit', 'danger')
+            return redirect(url_for('task', task_id=task_id))   
+                    
         if form.validate_on_submit():
             task = mongo.db.tasks
             task.update_one({
@@ -223,9 +228,8 @@ def update_task(task_id):
                                                                     }})
             flash('Your Recipe has been updated', 'info')
             return redirect(url_for('task', task_id=task_id))
-        else:
-            flash('Sorry this is not your recipe to edit', 'danger')
-    return redirect(url_for('task', task_id=task_id))           
+    
+           
                                           
         
 

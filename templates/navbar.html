@@ -3,7 +3,7 @@
     <h6 class="title text-white d-inline align-middle">Gujarati FODMAP CookBook</h6>
     </a>
 
-    <span class="username"><strong>User:&nbsp;{% if 'username' in session %}{{ session['username'].title() }}{% endif %}</strong></span>
+    {% if 'username' in session %}<span class="username"><strong>User:&nbsp;{{ session['username'].title() }}{% endif %}</strong></span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
         <span class="navbar-toggler-icon">      
         </span>
