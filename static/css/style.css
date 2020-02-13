@@ -209,9 +209,7 @@ button.btn.btn-link.titles {
 
  .main-footer {
     background-color: var(--secondary-color);
-    position:absolute;
-    left: 0 ; right: 0; bottom: 0; 
-    height:80px;
+   
   }
 
  .footer-text {
@@ -244,10 +242,6 @@ button.btn.btn-link.titles {
     .img-photo {
         max-width:300px;
         height:auto;
-    }
-
-    .main-footer {
-        height:100px;
     }
 
 }
