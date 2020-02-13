@@ -196,14 +196,12 @@ def update_task(task_id):
 
         if request.method == 'GET':
             form = RecipeForm(data=the_task)
-            return render_template('edit_recipe.html', tasks=the_task, form=form, title='Edit Recipe')
-        else:
-            flash('Sorry this is not your recipe to edit', 'danger')
-            return redirect(url_for('task', task_id=task_id)) 
+            return render_template('edit_recipe.html', task=the_task, form=form, title='Edit Recipe')
+        
         if form.validate_on_submit():
             task = mongo.db.tasks
             task.update_one({
-                '_id': ObjectId('tasks_id'),
+                '_id': ObjectId('task_id'),
             }, {
                 '$set': {
                             'recipe_name' : request.form['recipe_name'],
@@ -225,7 +223,8 @@ def update_task(task_id):
                                                                     }})
             flash('Your Recipe has been updated', 'info')
             return redirect(url_for('task', task_id=task_id))  
-           
+    flash('Sorry not your recipe to edit')
+    return redirect(url_for('task', task_id=task_id))       
                                           
         
 
