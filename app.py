@@ -31,7 +31,8 @@ mongo = PyMongo(app)
 @app.route('/')
 def index():
 
-    # logic for pagination
+    # Pagination- Adapated and taken code from Code with Harry and S.MuirHead(Recipe CookBook App - MIT License)
+    
     page_limit = 6
     current_page = int(request.args.get('current_page', 1))
     total = mongo.db.tasks.count()
@@ -135,7 +136,7 @@ def filterallergens():
 
 # End of taken and adapated code for Filtering
 
-# Add Recipe- adapated from Code Institute task lectures
+# Add Recipe- adapated from Code Institute Task Lectures
 
 @app.route('/create_task', methods=['GET', 'POST'])
 def create_task():
@@ -177,7 +178,7 @@ def create_task():
 
 
 
-# Update Recipe- adapated from Code Institute task lectures
+# Update Recipe- adapated from Code Institute Task Lectures
 
  
 @app.route('/update_task/<task_id>', methods=['GET','POST'])
@@ -231,8 +232,29 @@ def update_task(task_id):
                                           
         
 
-# Delete Recipe
+# Delete Recipe- adapted from Code Institute Task Lectures
 
+@app.route('/delete_task/<task_id>', methods=['GET','POST'])
+def delete_task(task_id):
+     if 'logged_in' in session:
+         user = mongo.db.user.find_one({"name": session['username'].title()})
+         the_task = mongo.db.tasks.find_one({'_id': ObjectId(task_id)})
+         
+         if user['name'].title() == the_task['username'].title():
+             task = mongo.db.tasks
+             task.delete_one({
+                '_id': ObjectId(task_id)
+            })
+             flash('Your recipe has been deleted', 'success')
+             return redirect(url_for('task'))
+         flash('Sorry this is not your recipe to delete', 'danger')
+         return redirect('task', task_id=task_id)
+     else:
+         flash('Only logged in users can delete recipes', 'info')
+         return redirect(url_for('task'))
+            
+         
+    
 
 # Upvotes
 

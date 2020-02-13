@@ -145,6 +145,11 @@ input {
      text-align: center;
  }
 
+ .numbers {
+     font-size:2em;
+     font-weight: 400;
+ }
+
  /* Select */
 
  select {
