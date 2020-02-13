@@ -42,7 +42,7 @@ def index():
         (current_page - 1)*page_limit).limit(page_limit)
     return render_template('index.html', tasks=tasks, title='Home', current_page=current_page, pages=pages)
 
-# View Each Recipe
+# View Each Recipe- adapated from Code Institute task lectures
 
 
 @app.route('/task/<task_id>')
@@ -135,7 +135,7 @@ def filterallergens():
     return render_template('filter.html', results=results, title="Filter")
 
 
-# Add Recipe
+# Add Recipe- adapated from Code Institute task lectures
 
 @app.route('/create_task', methods=['GET', 'POST'])
 def create_task():
@@ -178,56 +178,36 @@ def create_task():
 
 
 
-# Update Recipe
+# Update Recipe- adapated from Code Institute task lectures
 
 @app.route('/update_task/<task_id>', methods=['GET','POST'])
 def update_task(task_id):
-    """
-    Function to update a recipe
-    """
-    if 'logged_in' not in session:  # Check if its a logged in user
-        flash('Sorry, only logged in users can edit there own recipes. Please register', 'info')
-        return redirect(url_for('index'))
-    # Find user in db
-    user = mongo.db.user.find_one({"name": session['username'].title()})
-    recipe_task = mongo.db.tasks.find_one({'_id': ObjectId(task_id)})
-    form = RecipeForm()
+    tasks = mongo.db.tasks
     
-    # If user created then they can edit
-    if user['name'].title() == recipe_task['username'].title():       
-      
-        if request.method == 'GET':
-            form = RecipeForm(data=recipe_task)
-            return render_template('edit_recipe.html', tasks=recipe_task, form=form, title='Edit Recipe')
-        else:
-            flash('Sorry this is not your recipe to edit', 'danger')
-            return redirect(url_for('task', task_id=task_id))   
-                    
-        if form.validate_on_submit():
-            task = mongo.db.tasks
-            task.update_one({
-                '_id': ObjectId('tasks_id'),
-            }, {
-                '$set': {
-                            'recipe_name' : request.form['recipe_name'],
-                            'recipe_image' : request.form['recipe_image'],
-                            'ingredients' : request.form['ingredients'],
-                            'serving_size' : request.form['serving_size'],
-                            'recipe_course' : request.form['recipe_course'],
-                            'allergen' : request.form['allergen'],
-                            'calories' : request.form['calories'],
-                            'description' : request.form['description'],
-                            'cooking_time' : request.form['cooking_time'],
-                            'instruction' : request.form['instruction'],
-                            'instruction1' : request.form['instruction1'],
-                            'instruction2' : request.form['instruction2'],
-                            'instruction3' : request.form['instruction3'],
-                            'instruction4' : request.form['instruction4'],
-                            'instruction5' : request.form['instruction5'],
-                            'instruction6' : request.form['instruction6'],
-                                                                    }})
-            flash('Your Recipe has been updated', 'info')
-            return redirect(url_for('task', task_id=task_id))
+    tasks.update({'_id': ObjectId(task_id)},
+                 {
+                            'recipe_name' : request.form.get('recipe_name'),
+                            'recipe_image' : request.form.get('recipe_image'),
+                            'ingredients' : request.form.get('ingredients'),
+                            'serving_size' : request.form.get('serving_size'),
+                            'recipe_course' : request.form.get ('recipe_course'),
+                            'allergen' : request.form.get('allergen'),
+                            'calories' : request.form.get('calories'),
+                            'description' : request.form.get('description'),
+                            'cooking_time' : request.form.get('cooking_time'),
+                            'instruction' : request.form.get('instruction'),
+                            'instruction1' : request.form.get('instruction1'),
+                            'instruction2' : request.form.get('instruction2'),
+                            'instruction3' : request.form.get('instruction3'),
+                            'instruction4' : request.form.get('instruction4'),
+                            'instruction5' : request.form.get('instruction5'),
+                            'instruction6' : request.form.get('instruction6'),
+                }) 
+    flash('Your Recipe has been updated', 'info')
+    return redirect(url_for('task', task_id=task_id))
+
+        
+       
     
            
                                           
