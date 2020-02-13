@@ -1,10 +1,8 @@
 import os
 import math
 import re
-import bcrypt
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Flask, render_template, redirect, request, url_for, flash
-from flask_login import login_required
 from flask_pymongo import PyMongo, pymongo
 from forms import RegistrationForm, LoginForm, RecipeForm
 from bson.objectid import ObjectId
@@ -78,7 +76,7 @@ def findtask():
 
 # Filters
 
-# Filter for course only
+# Filter for course only-  Adapated and taken code from pretty printed and S.MuirHead(Recipe CookBook App - MIT License.)
 
 @app.route('/filtercourses', methods=['GET', 'POST'])
 def filtercourses():
@@ -106,7 +104,7 @@ def filtercourses():
     return render_template('filter.html', results=results, title="Filter")
 
 
-# Filter Through Allergens
+
 
 @app.route('/filterallergens', methods=['GET', 'POST'])
 def filterallergens():
@@ -134,6 +132,8 @@ def filterallergens():
 
     return render_template('filter.html', results=results, title="Filter")
 
+
+# End of taken and adapated code for Filtering
 
 # Add Recipe- adapated from Code Institute task lectures
 
@@ -166,8 +166,7 @@ def create_task():
             'instruction4' : request.form['instruction4'],
             'instruction5' : request.form['instruction5'],
             'instruction6' : request.form['instruction6'],
-            'username': session['username'].title(),
-            
+            'username': session['username'].title(),            
             
         
          })
@@ -180,35 +179,52 @@ def create_task():
 
 # Update Recipe- adapated from Code Institute task lectures
 
+ 
 @app.route('/update_task/<task_id>', methods=['GET','POST'])
 def update_task(task_id):
-    tasks = mongo.db.tasks
+    # Check if user is logged in
+    if 'logged_in' not in session:  # Check if its a logged in user
+        flash('Sorry, only logged in users can create recipes. Please register')
+        return redirect(url_for('index'))
     
-    tasks.update({'_id': ObjectId(task_id)},
-                 {
-                            'recipe_name' : request.form.get('recipe_name'),
-                            'recipe_image' : request.form.get('recipe_image'),
-                            'ingredients' : request.form.get('ingredients'),
-                            'serving_size' : request.form.get('serving_size'),
-                            'recipe_course' : request.form.get ('recipe_course'),
-                            'allergen' : request.form.get('allergen'),
-                            'calories' : request.form.get('calories'),
-                            'description' : request.form.get('description'),
-                            'cooking_time' : request.form.get('cooking_time'),
-                            'instruction' : request.form.get('instruction'),
-                            'instruction1' : request.form.get('instruction1'),
-                            'instruction2' : request.form.get('instruction2'),
-                            'instruction3' : request.form.get('instruction3'),
-                            'instruction4' : request.form.get('instruction4'),
-                            'instruction5' : request.form.get('instruction5'),
-                            'instruction6' : request.form.get('instruction6'),
-                }) 
-    flash('Your Recipe has been updated', 'info')
-    return redirect(url_for('task', task_id=task_id))
+    user = mongo.db.user.find_one({"name": session['username'].title()})
+    the_task = mongo.db.tasks.find_one_or_404({'_id': ObjectId(task_id)})
+    form = RecipeForm()
+    
+    # If user created then they can edit 
+    if user['name'].title() == the_task['username'].title():       
 
-        
-       
-    
+        if request.method == 'GET':
+            form = RecipeForm(data=the_task)
+            return render_template('edit_recipe.html', tasks=the_task, form=form, title='Edit Recipe')
+        else:
+            flash('Sorry this is not your recipe to edit', 'danger')
+            return redirect(url_for('task', task_id=task_id)) 
+        if form.validate_on_submit():
+            task = mongo.db.tasks
+            task.update_one({
+                '_id': ObjectId('tasks_id'),
+            }, {
+                '$set': {
+                            'recipe_name' : request.form['recipe_name'],
+                            'recipe_image' : request.form['recipe_image'],
+                            'ingredients' : request.form['ingredients'],
+                            'serving_size' : request.form['serving_size'],
+                            'recipe_course' : request.form['recipe_course'],
+                            'allergen' : request.form['allergen'],
+                            'calories' : request.form['calories'],
+                            'description' : request.form['description'],
+                            'cooking_time' : request.form['cooking_time'],
+                            'instruction' : request.form['instruction'],
+                            'instruction1' : request.form['instruction1'],
+                            'instruction2' : request.form['instruction2'],
+                            'instruction3' : request.form['instruction3'],
+                            'instruction4' : request.form['instruction4'],
+                            'instruction5' : request.form['instruction5'],
+                            'instruction6' : request.form['instruction6'],
+                                                                    }})
+            flash('Your Recipe has been updated', 'info')
+            return redirect(url_for('task', task_id=task_id))  
            
                                           
         
