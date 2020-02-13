@@ -172,6 +172,12 @@ input {
 
  /* End of adapted CSS */
 
+ /* Pagination */
+
+ .pag-cont {
+     margin-bottom: 3em;
+ }
+
  /* Buttons */
 
  .search {
@@ -203,9 +209,17 @@ button.btn.btn-link.titles {
 
  .main-footer {
     background-color: var(--secondary-color);
-    opacity:0.9;
+    position:absolute;
+    left: 0 ; right: 0; bottom: 0; 
+    height:80px;
+  }
+
+ .footer-text {
+     letter-spacing: 1px;
+     font-weight: 200;
+    
  }
- 
+
  
  /* Rule */
 
@@ -223,9 +237,17 @@ button.btn.btn-link.titles {
          margin:auto;
      }
 
-     .img-photo {
+     .pag-cont {
+         margin-bottom: 4em;
+     }
+
+    .img-photo {
         max-width:300px;
         height:auto;
+    }
+
+    .main-footer {
+        height:100px;
     }
 
 }

@@ -181,16 +181,14 @@ def create_task():
 # Update Recipe- adapated from Code Institute Task Lectures
 
  
+ 
 @app.route('/update_task/<task_id>', methods=['GET','POST'])
 def update_task(task_id):
     # Check if user is logged in
     if 'logged_in' not in session:  # Check if its a logged in user
         flash('Sorry, only logged in users can edit there own recipes. Please login', 'info')
         return redirect(url_for('index'))
-    else:
-        flash('Sorry not your recipe to edit', 'danger')
-        return redirect(url_for('index'))
-       
+           
     user = mongo.db.user.find_one({"name": session['username'].title()})
     the_task = mongo.db.tasks.find_one_or_404({'_id': ObjectId(task_id)})
     form = RecipeForm()
@@ -226,11 +224,10 @@ def update_task(task_id):
                             'instruction6' : request.form['instruction6'],
                                                                     }})
             flash('Your Recipe has been updated', 'info')
-            return redirect(url_for('task', task_id=task_id))  
-    flash('Sorry not your recipe to edit', 'danger')
-    return redirect(url_for('task', task_id=task_id))       
-                                          
-        
+            return redirect(url_for('task', task_id=task_id)) 
+    flash('Sorry not your recipe to edit!', 'danger')
+    return redirect(url_for('task', task_id=task_id))    
+       
 
 # Delete Recipe- adapted from Code Institute Task Lectures
 
@@ -248,7 +245,8 @@ def delete_task(task_id):
              flash('Your recipe has been deleted', 'success')
              return redirect(url_for('index'))
          flash('Sorry this is not your recipe to delete', 'danger')
-         return redirect(url_for('task', task_id=task_id))                         
+         return redirect(url_for('task', task_id=task_id))
+                         
      else:
          flash('Only logged in users can delete recipes', 'info')
          return redirect(url_for('index'))
