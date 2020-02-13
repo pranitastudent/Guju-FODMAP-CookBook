@@ -234,7 +234,7 @@ def update_task(task_id):
 
 # Delete Recipe- adapted from Code Institute Task Lectures
 
-@app.route('/delete_task/<task_id>', methods=['GET','POST'])
+@app.route('/delete_task/<task_id>')
 def delete_task(task_id):
      if 'logged_in' in session:
          user = mongo.db.user.find_one({"name": session['username'].title()})
@@ -246,12 +246,12 @@ def delete_task(task_id):
                 '_id': ObjectId(task_id)
             })
              flash('Your recipe has been deleted', 'success')
-             return redirect(url_for('task'))
+             return redirect(url_for('index'))
          flash('Sorry this is not your recipe to delete', 'danger')
-         return redirect('task', task_id=task_id)
+         return redirect(url_for('task', task_id=task_id))                         
      else:
          flash('Only logged in users can delete recipes', 'info')
-         return redirect(url_for('task'))
+         return redirect(url_for('index'))
             
          
     
