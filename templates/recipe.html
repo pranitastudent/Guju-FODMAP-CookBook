@@ -2,6 +2,20 @@
 
 {% block content %}
 
+<!-- Breadcrumb -->
+
+<section id="bcrumb">
+    <div class="container-fluid px-0">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ url_for('index')}}"><i class="fas fa-home"></i>&nbsp;Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Recipe</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+
 <!-- Recipe Name -->
 
 <div class="container">
@@ -34,9 +48,8 @@
             <p class ="text-center mt-3"><i class="fas fa-calculator fa-2x"></i></p>
 
             <h3 class="my-5 text-center">Author:  {{task.username}}</h3>
-
-          
-           </div>
+                    
+        </div>
         <div class="col-sm-6 col-xs-12 mt-5 pb-3">
             <img class=" img-photo" src="{{ task.recipe_image }}" alt=""> 
              <h3 class="my-3 text-center">Upvotes</h3>
@@ -52,6 +65,10 @@
          </div>
     </div>
 </div>
+
+<!-- Back to The Top Button -->
+
+<button id="topBtn"><i class="fas fa-arrow-up"></i></button>
 
 <!-- Recipe Method -->
 <div class="container">

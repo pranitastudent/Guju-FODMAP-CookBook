@@ -2,6 +2,19 @@
 
 {% block content %}
 
+<!-- Breadcrumb -->
+
+<section id="bcrumb">
+    <div class="container-fluid px-0">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ url_for('index')}}"><i class="fas fa-home"></i>&nbsp;Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Register</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
 <section class="container my-5">
     <div class="row">
         <div class="col-sm-6 col-xs-12 mx-auto">

@@ -226,6 +226,23 @@ button.btn.btn-link.titles {
      height:50px;
  }
 
+ #topBtn {
+    position: fixed;
+    bottom: 100px;
+    right:40px;
+    font-size: 22px;
+    width: 50px;
+    height: 50px;
+    background: var(--secondary-color);
+    opacity:0.9;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display:none;
+    z-index: 1;
+
+}
+
 
  /* Footer*/
  
@@ -248,8 +265,6 @@ button.btn.btn-link.titles {
      font-weight: 200;
    
  }
-
-
  
  /* Rule */
 
@@ -281,6 +296,16 @@ button.btn.btn-link.titles {
         transform-origin:0 0;
 
     }
+
+    #topBtn {
+        height: 30px;
+        width:25px;
+        right:10px;
+    }
+
+    .title {
+        
+    }
   
 
 }
@@ -309,6 +334,10 @@ button.btn.btn-link.titles {
     .main-footer {
         position:absolute;
         bottom: 0;
+    }
+
+    .login-cont {
+        margin-bottom:6rem;
     }
  }
   
