@@ -21,6 +21,10 @@ app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 
 app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY')
 
+app.config["RECAPTCHA_PUBLIC_ KEY"] = os.environ.get('RECAPTCHA_PUBLIC_KEY')
+
+app.config ["RECAPTCHA_PRIVATE_KEY"] = os.environe.get('RECPATCHA_PRIVATE_KEY')
+
 mongo = PyMongo(app)
 
 

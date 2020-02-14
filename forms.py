@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, PasswordField, TextField
 from wtforms.validators import DataRequired, ValidationError
+from flask_wtf.recaptcha.fields import RecaptchaField
 
 
 # Registration form
@@ -15,6 +16,7 @@ class RegistrationForm(FlaskForm):
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
+    recaptcha = RecaptchaField()
 
 # Recipe Form
 
@@ -34,5 +36,6 @@ class RecipeForm(FlaskForm):
     instruction3 =  TextField('Enter Instruction 4')
     instruction4 =  TextField('Enter Instruction 5')
     instruction5 =  TextField('Enter Instruction 6')
-    instruction6 =  TextField('Enter Instruction 7')      
+    instruction6 =  TextField('Enter Instruction 7')
+    recaptcha = RecaptchaField()      
       
