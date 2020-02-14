@@ -20,9 +20,31 @@ class FlaskTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTrue(b"Undhiyu" in response.data)
         
-# Search Test
+# Search Test function
 
-def test_        
+    def test_findtask(self):
+        tester = app.test_client(self)
+        response = tester.get('/', content_type='html/text')
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(b"Gluten" in response.data)
+        
+# Filters - Course and allergens
+
+    def test_filtercourses(self):
+        tester = app.test_client(self)
+        response = tester.post('/filtercourses', content_type='html/text')
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(b"Main")
+        
+    def test_filterallergens(self):
+        tester = app.test_client(self)
+        response = tester.post('/filterallergens', content_type='html/text')
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(b"Nuts")
+            
+        
+                
+                
         
             
 
