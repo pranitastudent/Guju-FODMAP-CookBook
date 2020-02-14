@@ -100,6 +100,9 @@ a.link {
 .labels {
     padding-left:40px;
  }
+ .instruction {
+     margin-bottom:6rem;
+ }
 
  /* images */
 
@@ -118,6 +121,14 @@ a.link {
 .img-intestine {
     padding-left: 4em;
 }
+
+/* Containers */
+
+.add-cont {
+    margin-top: 3rem;
+    margin-bottom: 8rem;
+}
+
 
 /* Inputs */
 
@@ -221,9 +232,7 @@ button.btn.btn-link.titles {
  
  .main-footer {
     background-color: var(--secondary-color);
-    position:absolute;
-    bottom:0;
-   
+      
   }
 
   .content {
@@ -267,6 +276,13 @@ button.btn.btn-link.titles {
         height:auto;
     }
 
+    .recaptcha {
+        transform:scale(0.77);
+        transform-origin:0 0;
+
+    }
+  
+
 }
 
  @media (min-width:700px) {
@@ -289,5 +305,10 @@ button.btn.btn-link.titles {
         display: flex;
         justify-content: center;
     }
-   
-}
+    
+    .main-footer {
+        position:absolute;
+        bottom: 0;
+    }
+ }
+  

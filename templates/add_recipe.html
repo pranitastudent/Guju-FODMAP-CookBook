@@ -2,9 +2,9 @@
 {% block content %}
 
 
-<section class="container my-4">
+<section class="container  add-cont">
     <div class="row">
-        <div class="col-sm-6 col-xs-12 mx-auto">
+        <div class="col-sm-12 col-xs-12 mx-auto">
             <div class="card">
                 <div class="card-heading bg-primary text-white">
                     <h2 class="text-center p-3">Add Recipe</h2>
@@ -24,77 +24,78 @@
 
                         <!-- Add Ingredients -->
                         <label for="serving_size">Ingredients: </label>
-                            <input type="text" class="form-control" name="ingredients" id="ingredients"
-                                    placeholder="Ingredients" minlength=5 required><br>    
+                        <textarea class="form-control" name="ingredients" id="ingredients" rows="2"
+                            placeholder="Ingredients" minlength=5 required></textarea><br>
                         <!-- Add Description -->
                         <label for="serving_size">Description: </label>
-                        <input type="text" class="form-control" name="description" id="description"
-                                placeholder="Description" minlength=5 required><br> 
-                                
+                        <textarea class="form-control" name="description" id="description" placeholder="Description"
+                            minlength=5 rows="3" required></textarea><br>
+
                         <!-- Add Course -->
                         <label for="recipe_course">Course: </label>
-                             <input type="text" class="form-control" name="recipe_course" id="recipe_course"
-                                 placeholder="Enter Main, Starter or Desert" minlength=3 required><br>    
-                                 
+                        <input type="text" class="form-control" name="recipe_course" id="recipe_course"
+                            placeholder="Enter Main, Starter or Desert" minlength=3 required><br>
+
                         <!-- Add Allergen -->
-                         <label for="allergen">Allergen: </label>
-                         <input type="text" class="form-control" name="allergen" id="allergen"
-                             placeholder="Enter None, Eggs or Nuts" minlength=3 required><br>              
+                        <label for="allergen">Allergen: </label>
+                        <input type="text" class="form-control" name="allergen" id="allergen"
+                            placeholder="Enter None, Eggs or Nuts" minlength=3 required><br>
 
                         <!-- Add Serving Size -->
                         <label for="serving_size">Serving Size: </label>
                         <input type="number" class="form-control" name="serving_size" id="serving_size"
                             placeholder="Serving Size in numbers" minlength=5 required><br>
-                                
+
                         <!--Add Calories  -->
                         <label for="calories">Calories: </label>
-                        <input type="number" class="form-control" name="calories" id="calories" placeholder="Calories in numbers"
-                            minlength=1 required><br>
-                        
+                        <input type="number" class="form-control" name="calories" id="calories"
+                            placeholder="Calories in numbers" minlength=1 required><br>
+
                         <!--Add Cooking Time  -->
                         <label for="cooking_time">Cooking Time: </label>
                         <input type="number" class="form-control" name="cooking_time" id="cooking_time"
                             placeholder="Cooking Time in minutes" minlength=5 required><br>
 
-                        <h3 class="my-5">Please note a maximum of 7 instruction steps can be inserted for your recipe</h2><br>
-                        
-                         <!--Add Instruction Step -->
-                        <label for="instruction">Instructions Step: 1 </label>
-                        <input type="text" class="form-control" name="instruction" id="instruction"
-                            placeholder="Instruction One" minlength=8><br>
-                        
-                        <!--Add Instruction Step -->    
-                        <label for="instruction1">Instructions Step 2: </label>
-                        <input type="text" class="form-control" name="instruction1" id="instruction1"
-                            placeholder="Instruction Two" minlength=8 ><br>
+                        <h3 class="my-5">Please note a maximum of 7 instruction steps can be inserted for your recipe
+                            </h2><br>
 
-                        <!--Add Instruction Step -->    
-                        <label for="instruction2">Instructions Step 3: </label>
-                        <input type="text" class="form-control" name="instruction2" id="instruction2"
-                            placeholder="Instruction Three" minlength=8><br>
+                            <!--Add Instruction Step -->
+                            <label for="instruction">Instructions Step: 1 </label>
+                            <textarea class="form-control" name="instruction" id="instruction"
+                                placeholder="Instruction One" rows="3" minlength=8></textarea><br>
 
-                        <!--Add Instruction Step -->  
-                        <label for="instruction3">Instructions Step 4: </label>
-                        <input type="text" class="form-control" name="instruction3" id="instruction3"
-                            placeholder="Instruction Four" minlength=8><br>
-                        
-                        <!--Add Instruction Step -->    
-                        <label for="instruction4">Instructions Step 5: </label>
-                        <input type="text" class="form-control" name="instruction4" id="instruction4"
-                            placeholder="Instruction Five" minlength=8><br>
+                            <!--Add Instruction Step -->
+                            <label for="instruction1">Instructions Step 2: </label>
+                            <textarea class="form-control" name="instruction1" id="instruction1"
+                                placeholder="Instruction Two" rows="3" minlength=8></textarea><br>
 
-                        <!--Add Instruction Step -->    
-                        <label for="instruction5">Instructions Step 6: </label>
-                        <input type="text" class="form-control" name="instruction5" id="instruction5"
-                            placeholder="Instruction Six" minlength=8><br>
+                            <!--Add Instruction Step -->
+                            <label for="instruction2">Instructions Step 3: </label>
+                            <textarea class="form-control" name="instruction2" id="instruction2"
+                                placeholder="Instruction Three" rows="3" minlength=8></textarea><br>
 
-                         <!--Add Instruction Step -->
-                        <label for="instruction6">Instructions Step 7: </label>
-                        <input type="text" class="form-control" name="instruction6" id="instruction6"
-                            placeholder="Instruction Seven" minlength=8>
+                            <!--Add Instruction Step -->
+                            <label for="instruction3">Instructions Step 4: </label>
+                            <textarea class="form-control" name="instruction3" id="instruction3"
+                                placeholder="Instruction Four" rows="3" minlength=8></textarea><br>
 
-                        {{ form.recaptcha }}    
-                        <input type="submit" class="btn btn-success" value="Submit">
+                            <!--Add Instruction Step -->
+                            <label for="instruction4">Instructions Step 5: </label>
+                            <textarea class="form-control" name="instruction4" id="instruction4"
+                                placeholder="Instruction Five" rows="3" minlength=8></textarea><br>
+
+                            <!--Add Instruction Step -->
+                            <label for="instruction5">Instructions Step 6: </label>
+                            <textarea class="form-control" name="instruction5" id="instruction5"
+                                placeholder="Instruction Six" rows="3" minlength=8></textarea><br>
+
+                            <!--Add Instruction Step -->
+                            <label for="instruction6">Instructions Step 7: </label>
+                            <textarea class="form-control" name="instruction6" id="instruction6"
+                                placeholder="Instruction Seven" rows="3" minlength=8></textarea><br>
+
+                            <div class="recaptcha my-3">{{ form.recaptcha }} </div>
+                            <input type="submit" class="btn btn-success mb-5" value="Submit">
                     </form>
                 </div>
             </div>
