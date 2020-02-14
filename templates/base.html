@@ -21,6 +21,7 @@
 
 </head>
 <body>
+ 
 
 <!--Top Bar  -->
 {% include 'topbar.html'%}
@@ -52,8 +53,14 @@
 <!-- Main Content -->
 
 {% block content %}
+<div class="content">
+    <div class="content-inside">
+      content
+    </div>
+  </div>
 
 {% endblock %}
+
 
 <!-- Footer -->
 {% include 'footer.html' %}

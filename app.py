@@ -379,19 +379,18 @@ def page_not_found(e):
     """
     Route for handling 404 errors
     """
-    return render_template('404.html', title="Page not found"),404
+    return render_template('404.html', title="Page not found")
 
-# Error 500- dapted from Corey Schafer Flask Series
+# Error 500- adapted from Corey Schafer Flask Series
 
 @app.errorhandler(500)
 def internal_server_error(e):
     """"
     Route for handling 500 errors
     """
-    return render_template('500.html', title="Internal server error"),500
+    return render_template('500.html', title="Internal server error")
     
-
-    
+  
 
 
 if __name__ == '__main__':

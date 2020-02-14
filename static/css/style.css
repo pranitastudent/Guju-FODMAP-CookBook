@@ -14,8 +14,14 @@ html {
 html, body  {
     width: 100%;
     overflow-x: hidden;
+    margin:0;
       
-    }  
+} 
+
+a.link {
+    text-decoration: none;
+}
+    
 
 /* CSS Variables */
 
@@ -209,18 +215,31 @@ button.btn.btn-link.titles {
      height:50px;
  }
 
- /* Footer*/
 
+ /* Footer*/
+ 
+ 
  .main-footer {
     background-color: var(--secondary-color);
+    position:absolute;
+    bottom:0;
    
+  }
+
+  .content {
+    min-height: 100%;
+  }
+  .content-inside {
+    padding: 20px;
+    padding-bottom: 50px;
   }
 
  .footer-text {
      letter-spacing: 1px;
      font-weight: 200;
-    
+   
  }
+
 
  
  /* Rule */
@@ -264,6 +283,11 @@ button.btn.btn-link.titles {
 
     .input-field {
         padding-left:0px;
+    }
+
+    .pag-cont {
+        display: flex;
+        justify-content: center;
     }
    
 }
