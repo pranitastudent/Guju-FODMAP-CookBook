@@ -187,6 +187,10 @@ input {
      
  }
 
+.btn-success {
+    justify-content: center;
+}
+
 button.btn.btn-link.titles {
      color: #000;
      text-decoration: none;

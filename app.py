@@ -367,10 +367,31 @@ def logout():
     """
     session.clear()
     flash('You are successfully logged out', 'success')
-    return render_template('index.html')
+    return redirect(url_for('index'))
 
 
 # Error Handling - 404 and 500
+
+# Error 404- adapted from Corey Schafer Flask Series
+
+@app.errorhandler(404)
+def page_not_found(e):
+    """
+    Route for handling 404 errors
+    """
+    return render_template('404.html', title="Page not found"),404
+
+# Error 500- dapted from Corey Schafer Flask Series
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    """"
+    Route for handling 500 errors
+    """
+    return render_template('500.html', title="Internal server error"),500
+    
+
+    
 
 
 if __name__ == '__main__':
