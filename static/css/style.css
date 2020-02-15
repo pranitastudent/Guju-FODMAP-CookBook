@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 
+/* Global Styles */
+
 body {
     min-height:100%; 
     min-width:100%;
@@ -46,6 +48,7 @@ a.link {
 .bg-reg {
     background-color: var(--dark-color);
 }
+
 /* Navbar */
 
 .navbar {
@@ -74,12 +77,14 @@ a.link {
     color:#fff;
 }
 
+
 /* About */
 
 .about {
     font-size: 1.25rem;
     letter-spacing: 1px;
 }
+
 
 /* Showcase */
 
@@ -95,11 +100,13 @@ a.link {
     padding-bottom: 8rem;
 }
 
+
 /* Lead text */
 
 .lead {
     font-size: 2.5rem;
 }
+
 
 /* Labels*/
 
@@ -110,7 +117,8 @@ a.link {
      margin-bottom:6rem;
  }
 
- /* images */
+
+ /* Images */
 
  .img-photo {
      max-width:500px;
@@ -127,6 +135,7 @@ a.link {
 .img-intestine {
     padding-left: 4em;
 }
+
 
 /* Containers */
 
@@ -147,6 +156,7 @@ input {
     height:90px!important;
 }
 
+
 /* Upvotes */
 
 .upvotes {
@@ -156,6 +166,8 @@ input {
     text-align: center;
     
 }
+
+
 /* Social Media Icons */
 
 .fab {
@@ -176,6 +188,7 @@ input {
      font-size:2em;
      font-weight: 400;
  }
+
 
  /* Select */
 
@@ -199,11 +212,15 @@ input {
 
  /* End of adapted CSS */
 
+
+
  /* Pagination */
 
  .pag-cont {
      margin-bottom: 3em;
  }
+
+
 
  /* Buttons */
 
@@ -275,12 +292,15 @@ button.btn.btn-link.titles {
      font-weight: 200;
    
  }
+
  
  /* Rule */
 
  .rule {
      background-color:#fff;
  }
+
+
 
  /* Media Queries */
 
@@ -304,7 +324,6 @@ button.btn.btn-link.titles {
     .recaptcha {
         transform:scale(0.77);
         transform-origin:0 0;
-
     }
 
     #topBtn {
@@ -349,5 +368,4 @@ button.btn.btn-link.titles {
     .login-cont {
         margin-bottom:6rem;
     }
- }
-  
+ }  
