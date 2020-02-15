@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<!-- Edit Recipe Form -->
 
 <section class="container add-cont">
     <div class="row">
@@ -28,12 +29,12 @@
                         <!-- Edit Ingredients -->
                         <label for="serving_size">Ingredients: </label>
                         <input type="text" class="form-control edit" name="ingredients" id="ingredients"
-                        value="{{task.ingredients}}" placeholder="Ingredients" minlength=5 required><br>
+                            value="{{task.ingredients}}" placeholder="Ingredients" minlength=5 required><br>
 
                         <!-- Edit Description -->
                         <label for="serving_size">Description: </label>
                         <input type="text" class="form-control edit" name="description" id="description"
-                        value="{{task.description}}" placeholder="Description" minlength=5 required><br>
+                            value="{{task.description}}" placeholder="Description" minlength=5 required><br>
 
                         <!-- Edit Course -->
                         <label for="recipe_course">Course: </label>
@@ -64,22 +65,22 @@
                             required><br>
 
                         <h3 class="my-5">Please note a maximum of 7 instruction steps can be inserted for your recipe
-                            </h2><br>
+                            </h3><br>
 
                             <!--Edit Instruction Step -->
                             <label for="instruction">Instructions Step: 1 </label>
                             <input type="text" class="form-control edit" name="instruction" id="instruction"
-                            value="{{task.instruction}}" placeholder="Instruction 1" minlength=5 required><br>
+                                value="{{task.instruction}}" placeholder="Instruction 1" minlength=5 required><br>
 
                             <!--Edit Instruction Step -->
                             <label for="instruction1">Instructions Step 2: </label>
                             <input type="text" class="form-control edit" name="instruction1" id="instruction1"
-                            value="{{task.instruction1}}" placeholder="Instruction 2" minlength=5><br>
+                                value="{{task.instruction1}}" placeholder="Instruction 2" minlength=5><br>
 
                             <!--Edit Instruction Step -->
                             <label for="instruction2">Instructions Step 3: </label>
                             <input type="text" class="form-control edit" name="instruction2" id="instruction2"
-                            value="{{task.instruction2}}" placeholder="Instruction 2" minlength=5><br>
+                                value="{{task.instruction2}}" placeholder="Instruction 2" minlength=5><br>
 
 
                             <!-- Back to The Top Button -->
@@ -89,22 +90,22 @@
                             <!--Edit Instruction Step -->
                             <label for="instruction3">Instructions Step 4: </label>
                             <input type="text" class="form-control edit" name="instruction3" id="instruction3"
-                            value="{{task.instruction3}}" placeholder="Instruction 3" minlength=5><br>
+                                value="{{task.instruction3}}" placeholder="Instruction 3" minlength=5><br>
 
                             <!--Edit Instruction Step -->
                             <label for="instruction4">Instructions Step 5: </label>
                             <input type="text" class="form-control edit" name="instruction4" id="instruction4"
-                            value="{{task.instruction4}}" placeholder="Instruction 4" minlength=5><br>
+                                value="{{task.instruction4}}" placeholder="Instruction 4" minlength=5><br>
 
                             <!--Edit Instruction Step -->
                             <label for="instruction5">Instructions Step 6: </label>
                             <input type="text" class="form-control edit" name="instruction5" id="instruction5"
-                            value="{{task.instruction5}}" placeholder="Instruction 5" minlength=5><br>
+                                value="{{task.instruction5}}" placeholder="Instruction 5" minlength=5><br>
 
                             <!--Edit Instruction Step -->
                             <label for="instruction6">Instructions Step 7: </label>
                             <input type="text" class="form-control edit" name="instruction6" id="instruction6"
-                            value="{{task.instruction6}}" placeholder="Instruction 6" minlength=5><br>
+                                value="{{task.instruction6}}" placeholder="Instruction 6" minlength=5><br>
 
 
                             <div class="recaptcha mt-3">{{ form.recaptcha }} </div>
@@ -118,5 +119,7 @@
         </div>
     </div>
 </section>
+
+<!-- End of Edit Recipe Form -->
 
 {% endblock %}

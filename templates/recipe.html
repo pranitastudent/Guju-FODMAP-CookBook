@@ -5,71 +5,72 @@
 <!-- Breadcrumb -->
 
 <section id="bcrumb">
-    <div class="container-fluid px-0">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{ url_for('index')}}"><i class="fas fa-home"></i>&nbsp;Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Recipe</li>
-        </ol>
-      </nav>
-    </div>
-  </section>
+  <div class="container-fluid px-0">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url_for('index')}}"><i class="fas fa-home"></i>&nbsp;Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Recipe</li>
+      </ol>
+    </nav>
+  </div>
+</section>
 
 
 <!-- Recipe Name -->
 
 <div class="container">
-    <div class="row">
-      <div class="col-sm-12 col-xs-12 text-center">
-        <h1 class ="text-center pt-3">{{ task.recipe_name }}</h1>
-        </div>
+  <div class="row">
+    <div class="col-sm-12 col-xs-12 text-center">
+      <h1 class="text-center pt-3">{{ task.recipe_name }}</h1>
     </div>
+  </div>
 </div>
 
 <!-- Recipe Ingredients and Photo -->
 
 <div class="container">
-    <div class="row">
-        <div class="col-sm-6 col-xs-12 mt-3">
-            <h2 class="text-center pt-5 pb-3">INGREDIENTS</h2>
-        
-            <p>{{ task.ingredients}}</p>   
-            
-            <h6 class ="text-center mt-5"><strong>Course : {{ task.recipe_course}}&nbsp;</strong></h6>  
-            <p class ="text-center mt-3"><i class="fas fa-utensils fa-2x"></i></p>
-            
-            <h6 class ="text-center mt-5"><strong>Cooking Time: {{ task.cooking_time}}&nbsp;minutes</strong></h6> 
-            <p class ="text-center mt-3"><i class="ingredients fas fa-clock fa-2x"></i></p>
-            
-            <h6 class ="text-center mt-5"><strong>Serving Size : {{ task.serving_size }}&nbsp;people</strong></h6> 
-            <p class ="text-center mt-3"><i class="fas fa-user-friends fa-2x"></i></p>      
+  <div class="row">
+    <div class="col-sm-6 col-xs-12 mt-3">
+      <h2 class="text-center pt-5 pb-3">INGREDIENTS</h2>
 
-            <h6 class ="text-center mt-5"><strong>Calories : {{ task.calories}}&nbsp;calories</strong></h6>  
-            <p class ="text-center mt-3"><i class="fas fa-calculator fa-2x"></i></p>
+      <p>{{ task.ingredients}}</p>
 
-            <h3 class="my-5 text-center">Author:  {{task.username}}</h3>
-                    
-        </div>
-        <div class="col-sm-6 col-xs-12 mt-5 pb-3">
-            <img class=" img-photo" src="{{ task.recipe_image }}" alt=""> 
-             <h3 class="my-3 text-center">Upvotes</h3>
-            <form action="{{url_for('upvotes', task_id=task._id)}}" class="text-center", method="POST">
-                <button type="submit" class="upvotes mt-3"><i class="fa fa-thumbs-up fa-3x thumb"></i></button>
-                <span class= "numbers mx-2"><strong>{{task.upvotes}}</strong></span>
-            </form>
-            <h4 class="my-3">Description of Dish</h4>
-            <p class="mt-3"><em>{{task.description}}</em></p> 
-           
-            <span><a href="{{ url_for('update_task', task_id=task._id)}}" class="btn btn-warning btn-lg text-dark">Edit</a>
-                <a href="{{ url_for('delete_task', task_id=task._id)}}" class="btn btn-danger btn-lg text-dark" data-toggle="modal"
-                data-target="#deleteModal">Delete</a></span>         
-         </div>
+      <h6 class="text-center mt-5"><strong>Course : {{ task.recipe_course}}&nbsp;</strong></h6>
+      <p class="text-center mt-3"><i class="fas fa-utensils fa-2x"></i></p>
+
+      <h6 class="text-center mt-5"><strong>Cooking Time: {{ task.cooking_time}}&nbsp;minutes</strong></h6>
+      <p class="text-center mt-3"><i class="ingredients fas fa-clock fa-2x"></i></p>
+
+      <h6 class="text-center mt-5"><strong>Serving Size : {{ task.serving_size }}&nbsp;people</strong></h6>
+      <p class="text-center mt-3"><i class="fas fa-user-friends fa-2x"></i></p>
+
+      <h6 class="text-center mt-5"><strong>Calories : {{ task.calories}}&nbsp;calories</strong></h6>
+      <p class="text-center mt-3"><i class="fas fa-calculator fa-2x"></i></p>
+
+      <h3 class="my-5 text-center">Author: {{task.username}}</h3>
+
     </div>
+    <div class="col-sm-6 col-xs-12 mt-5 pb-3">
+      <img class=" img-photo" src="{{ task.recipe_image }}" alt="">
+      <h3 class="my-3 text-center">Upvotes</h3>
+      <form action="{{url_for('upvotes', task_id=task._id)}}" class="text-center" , method="POST">
+        <button type="submit" class="upvotes mt-3"><i class="fa fa-thumbs-up fa-3x thumb"></i></button>
+        <span class="numbers mx-2"><strong>{{task.upvotes}}</strong></span>
+      </form>
+      <h4 class="my-3">Description of Dish</h4>
+      <p class="mt-3"><em>{{task.description}}</em></p>
+
+      <span><a href="{{ url_for('update_task', task_id=task._id)}}" class="btn btn-warning btn-lg text-dark">Edit</a>
+        <a href="{{ url_for('delete_task', task_id=task._id)}}" class="btn btn-danger btn-lg text-dark"
+          data-toggle="modal" data-target="#deleteModal">Delete</a></span>
+    </div>
+  </div>
 </div>
 
 <!-- Delete Modal -->
 
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -80,7 +81,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary text-dark" data-dismiss="modal">Close</button>
-        <a href="{{ url_for('delete_task', task_id=task._id)}}" class="btn btn-danger text-dark">Delete</a>       
+        <a href="{{ url_for('delete_task', task_id=task._id)}}" class="btn btn-danger text-dark">Delete</a>
       </div>
     </div>
   </div>
@@ -93,42 +94,42 @@
 <button id="topBtn"><i class="fas fa-arrow-up"></i></button>
 
 <!-- Recipe Method -->
+
 <div class="container">
-    <div class="row">
-      <div class="col-sm-12 col-xs-12 mb-5">
-        <h1 class="text-center mt-3 pb-3">METHOD</h1>
-        <ol class="pl-3">
-       {% if task.instruction %}
+  <div class="row">
+    <div class="col-sm-12 col-xs-12 mb-5">
+      <h1 class="text-center mt-3 pb-3">METHOD</h1>
+      <ol class="pl-3">
+        {% if task.instruction %}
         <li class="m2 pl-2">{{task.instruction}}</li><br>
-       {% endif %}
-   
-       {% if task.instruction1 %}
-        <li class="my-2 pl-2">{{task.instruction1}}</li><br> 
-       {% endif %}
- 
-       {% if task.instruction2 %}
+        {% endif %}
+
+        {% if task.instruction1 %}
+        <li class="my-2 pl-2">{{task.instruction1}}</li><br>
+        {% endif %}
+
+        {% if task.instruction2 %}
         <li class="my-2 pl-2">{{task.instruction2}}</li><br>
-       {% endif %} 
-      
-       {% if task.instruction3 %}
+        {% endif %}
+
+        {% if task.instruction3 %}
         <li class="my-2 pl-2">{{task.instruction3}}</li><br>
-       {% endif %}
+        {% endif %}
 
-       {% if task.instruction4 %}
-        <li class="my-2 pl-2">{{task.instruction4}}</li><br> 
-       {% endif %}
+        {% if task.instruction4 %}
+        <li class="my-2 pl-2">{{task.instruction4}}</li><br>
+        {% endif %}
 
-       {% if task.instruction5 %}
-        <li class="my-2 pl-2">{{task.instruction5}}</li><br> 
-       {% endif %}
+        {% if task.instruction5 %}
+        <li class="my-2 pl-2">{{task.instruction5}}</li><br>
+        {% endif %}
 
-       {% if task.instruction6 %}
-        <li class="instruction pl-2">{{task.instruction6}}</li> 
-       {% endif %}                    
-        </ol>
-        </div>
+        {% if task.instruction6 %}
+        <li class="instruction pl-2">{{task.instruction6}}</li>
+        {% endif %}
+      </ol>
     </div>
-</div
-
+  </div>
+</div>
 
 {% endblock %}
