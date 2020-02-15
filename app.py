@@ -23,7 +23,7 @@ app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY')
 
 app.config["RECAPTCHA_PUBLIC_KEY"] = os.environ.get('RECAPTCHA_PUBLIC_KEY')
 
-app.config ["RECAPTCHA_PRIVATE_KEY"] = os.environ.get('RECAPTCHA_PRIVATE_KEY')
+app.config["RECAPTCHA_PRIVATE_KEY"] = os.environ.get('RECAPTCHA_PRIVATE_KEY')
 
 mongo = PyMongo(app)
 
@@ -35,15 +35,21 @@ mongo = PyMongo(app)
 @app.route('/')
 def index():
 
-    # Pagination- Adapated and taken code from Code with Harry and S.MuirHead(Recipe CookBook App - MIT License)
-    
+    # Pagination- Adapated and taken code from Code with Harry and
+    # S.MuirHead(Recipe CookBook App - MIT License)
+
     page_limit = 6
     current_page = int(request.args.get('current_page', 1))
     total = mongo.db.tasks.count()
     pages = range(1, int(math.ceil(total / page_limit)) + 1)
     tasks = mongo.db.tasks.find().sort('_id', pymongo.ASCENDING).skip(
-        (current_page - 1)*page_limit).limit(page_limit)
-    return render_template('index.html', tasks=tasks, title='Home', current_page=current_page, pages=pages)
+        (current_page - 1) * page_limit).limit(page_limit)
+    return render_template(
+        'index.html',
+        tasks=tasks,
+        title='Home',
+        current_page=current_page,
+        pages=pages)
 
 # View Each Recipe- adapated from Code Institute task lectures
 
@@ -55,7 +61,9 @@ def task(task_id):
     individual recipe
     """
     task_count = mongo.db.tasks.count()
-    return render_template('recipe.html', task_count=task_count, task=mongo.db.tasks.find_one({'_id': ObjectId(task_id)}))
+    return render_template('recipe.html',
+                           task_count=task_count,
+                           task=mongo.db.tasks.find_one({'_id': ObjectId(task_id)}))
 
 
 # Search
@@ -73,7 +81,11 @@ def findtask():
         {"recipe_name": {"$regex": query, "$options": "i"}})
 
     if results.count():
-        return render_template('search.html', results=results, query=query, title="Search")
+        return render_template(
+            'search.html',
+            results=results,
+            query=query,
+            title="Search")
     else:
         flash('No results were found', 'info')
     return render_template('index.html')
@@ -81,7 +93,8 @@ def findtask():
 
 # Filters
 
-# Filter for course only-  Adapated and taken code from pretty printed and S.MuirHead(Recipe CookBook App - MIT License.)
+# Filter for course only-  Adapated and taken code from pretty printed and
+# S.MuirHead(Recipe CookBook App - MIT License.)
 
 @app.route('/filtercourses', methods=['GET', 'POST'])
 def filtercourses():
@@ -101,14 +114,12 @@ def filtercourses():
                 # iterate through items and key
                 for item in items:
                     for key in my_key:
-                        # Append key and item together                        
+                        # Append key and item together
                         filter_items.append({key: item})
                         results = mongo.db.tasks.find(
                             {'$and': [{'$or': filter_items}]})
 
     return render_template('filter.html', results=results, title="Filter")
-
-
 
 
 @app.route('/filterallergens', methods=['GET', 'POST'])
@@ -146,124 +157,127 @@ def filterallergens():
 def create_task():
     """Create a new recipe to db collection"""
     if 'logged_in' not in session:  # Check if its a logged in user
-        flash('Sorry, only logged in users can create recipes. Please register/login','info')
+        flash(
+            'Sorry, only logged in users can create recipes. Please register/login',
+            'info')
         return redirect(url_for('index'))
 
     form = RecipeForm(request.form)  # Initialise the form
     user = mongo.db.user.find_one({"name": session['username'].title()})
-    
-    if form.validate_on_submit():  # Insert new recipe if form is submitted
-       tasks = mongo.db.tasks
-       tasks.insert_one({
-            'recipe_name' : request.form['recipe_name'],
-            'recipe_image' : request.form['recipe_image'],
-            'ingredients' : request.form['ingredients'],
-            'serving_size' : request.form['serving_size'],
-            'recipe_course' : request.form['recipe_course'],
-            'allergen' : request.form['allergen'],
-            'calories' : request.form['calories'],
-            'description' : request.form['description'],
-            'cooking_time' : request.form['cooking_time'],
-            'instruction' : request.form['instruction'],
-            'instruction1' : request.form['instruction1'],
-            'instruction2' : request.form['instruction2'],
-            'instruction3' : request.form['instruction3'],
-            'instruction4' : request.form['instruction4'],
-            'instruction5' : request.form['instruction5'],
-            'instruction6' : request.form['instruction6'],
-            'username': session['username'].title(),            
-            
-        
-         })
-       flash ('Your Recipe has been added successfully', 'success')
-       return redirect(url_for('index'))
-    return render_template('add_recipe.html', form=form, title="Add Recipe")
-  
 
+    if form.validate_on_submit():  # Insert new recipe if form is submitted
+        tasks = mongo.db.tasks
+        tasks.insert_one({
+            'recipe_name': request.form['recipe_name'],
+            'recipe_image': request.form['recipe_image'],
+            'ingredients': request.form['ingredients'],
+            'serving_size': request.form['serving_size'],
+            'recipe_course': request.form['recipe_course'],
+            'allergen': request.form['allergen'],
+            'calories': request.form['calories'],
+            'description': request.form['description'],
+            'cooking_time': request.form['cooking_time'],
+            'instruction': request.form['instruction'],
+            'instruction1': request.form['instruction1'],
+            'instruction2': request.form['instruction2'],
+            'instruction3': request.form['instruction3'],
+            'instruction4': request.form['instruction4'],
+            'instruction5': request.form['instruction5'],
+            'instruction6': request.form['instruction6'],
+            'username': session['username'].title(),
+
+
+        })
+        flash('Your Recipe has been added successfully', 'success')
+        return redirect(url_for('index'))
+    return render_template('add_recipe.html', form=form, title="Add Recipe")
 
 
 # Update Recipe- adapated from Code Institute Task Lectures
 
- 
- 
-@app.route('/update_task/<task_id>', methods=['GET','POST'])
+
+@app.route('/update_task/<task_id>', methods=['GET', 'POST'])
 def update_task(task_id):
     # Check if user is logged in
     if 'logged_in' not in session:  # Check if its a logged in user
-        flash('Sorry, only logged in users can edit there own recipes. Please login', 'info')
+        flash(
+            'Sorry, only logged in users can edit there own recipes. Please login',
+            'info')
         return redirect(url_for('index'))
-           
+
     user = mongo.db.user.find_one({"name": session['username'].title()})
     the_task = mongo.db.tasks.find_one_or_404({'_id': ObjectId(task_id)})
     form = RecipeForm()
-    
-    # If user created then they can edit 
-    if user['name'].title() == the_task['username'].title():       
+
+    # If user created then they can edit
+    if user['name'].title() == the_task['username'].title():
 
         if request.method == 'GET':
             form = RecipeForm(data=the_task)
-            return render_template('edit_recipe.html', task=the_task, form=form, title='Edit Recipe')
-        
+            return render_template(
+                'edit_recipe.html',
+                task=the_task,
+                form=form,
+                title='Edit Recipe')
+
         if form.validate_on_submit():
             task = mongo.db.tasks
             task.update_one({
                 '_id': ObjectId(task_id),
             }, {
                 '$set': {
-                            'recipe_name' : request.form['recipe_name'],
-                            'recipe_image' : request.form['recipe_image'],
-                            'ingredients' : request.form['ingredients'],
-                            'serving_size' : request.form['serving_size'],
-                            'recipe_course' : request.form['recipe_course'],
-                            'allergen' : request.form['allergen'],
-                            'calories' : request.form['calories'],
-                            'description' : request.form['description'],
-                            'cooking_time' : request.form['cooking_time'],
-                            'instruction' : request.form['instruction'],
-                            'instruction1' : request.form['instruction1'],
-                            'instruction2' : request.form['instruction2'],
-                            'instruction3' : request.form['instruction3'],
-                            'instruction4' : request.form['instruction4'],
-                            'instruction5' : request.form['instruction5'],
-                            'instruction6' : request.form['instruction6'],
-                            }})
+                    'recipe_name': request.form['recipe_name'],
+                    'recipe_image': request.form['recipe_image'],
+                    'ingredients': request.form['ingredients'],
+                    'serving_size': request.form['serving_size'],
+                    'recipe_course': request.form['recipe_course'],
+                    'allergen': request.form['allergen'],
+                    'calories': request.form['calories'],
+                    'description': request.form['description'],
+                    'cooking_time': request.form['cooking_time'],
+                    'instruction': request.form['instruction'],
+                    'instruction1': request.form['instruction1'],
+                    'instruction2': request.form['instruction2'],
+                    'instruction3': request.form['instruction3'],
+                    'instruction4': request.form['instruction4'],
+                    'instruction5': request.form['instruction5'],
+                    'instruction6': request.form['instruction6'],
+                }})
             flash('Your Recipe has been updated', 'info')
-            return redirect(url_for('task', task_id=task_id)) 
+            return redirect(url_for('task', task_id=task_id))
     flash('Sorry not your recipe to edit!', 'danger')
-    return redirect(url_for('task', task_id=task_id))    
-       
+    return redirect(url_for('task', task_id=task_id))
+
 
 # Delete Recipe- adapted from Code Institute Task Lectures
 
 @app.route('/delete_task/<task_id>')
 def delete_task(task_id):
-     if 'logged_in' in session:
-         user = mongo.db.user.find_one({"name": session['username'].title()})
-         the_task = mongo.db.tasks.find_one({'_id': ObjectId(task_id)})
-         
-         if user['name'].title() == the_task['username'].title():
-             task = mongo.db.tasks
-             task.delete_one({
+    if 'logged_in' in session:
+        user = mongo.db.user.find_one({"name": session['username'].title()})
+        the_task = mongo.db.tasks.find_one({'_id': ObjectId(task_id)})
+
+        if user['name'].title() == the_task['username'].title():
+            task = mongo.db.tasks
+            task.delete_one({
                 '_id': ObjectId(task_id)
             })
-             flash('Your recipe has been deleted', 'success')
-             return redirect(url_for('index'))
-         flash('Sorry this is not your recipe to delete', 'danger')
-         return redirect(url_for('task', task_id=task_id))
-                         
-     else:
-         flash('Only logged in users can delete recipes', 'info')
-         return redirect(url_for('index'))
-            
-         
-    
+            flash('Your recipe has been deleted', 'success')
+            return redirect(url_for('index'))
+        flash('Sorry this is not your recipe to delete', 'danger')
+        return redirect(url_for('task', task_id=task_id))
+
+    else:
+        flash('Only logged in users can delete recipes', 'info')
+        return redirect(url_for('index'))
+
 
 # Upvotes
 
 @app.route('/upvotes/<task_id>', methods=['POST'])
 def upvotes(task_id):
     """
-    Allows User to upvote a specific 
+    Allows User to upvote a specific
     recipe
     """
 
@@ -317,12 +331,16 @@ def login():
             flash('Sorry incorrect password!', 'danger')
 
             return redirect(url_for('login'))
-        # If none of the form is valid or nothing matches username or password then redirect to login
-        flash('Sorry Your credentials are incorrect (username) please check and try again', 'danger')
+        # If none of the form is valid or nothing matches username or password
+        # then redirect to login
+        flash(
+            'Sorry Your credentials are incorrect (username) please check and try again',
+            'danger')
     return render_template('login.html', form=form, title='Login')
 
 
-# Register- Code adapted from Pretty printed video- PyMongo Login/Register - Debugging aided by Tutor Tim Nelson
+# Register- Code adapted from Pretty printed video- PyMongo Login/Register
+# - Debugging aided by Tutor Tim Nelson
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -344,17 +362,26 @@ def register():
             print(exist_user)
 
             if exist_user is None:
-                # If new user insert username, password and email into collection
+                # If new user insert username, password and email into
+                # collection
                 hash_pass = generate_password_hash(
                     request.form.get('password'))
                 user.insert_one({'name': request.form.get('username').title(),
                                  'pass': hash_pass})
                 session['username'] = request.form.get('username')
-                flash('You are successfully registered, Please log in!', 'success')
+                flash(
+                    'You are successfully registered, Please log in!',
+                    'success')
                 return redirect(url_for('login'))
             else:
-                flash('Sorry, username already taken. Please try another.', 'warning')
-                return redirect(url_for('register', form=form, title='Register'))
+                flash(
+                    'Sorry, username already taken. Please try another.',
+                    'warning')
+                return redirect(
+                    url_for(
+                        'register',
+                        form=form,
+                        title='Register'))
 
         else:
             return redirect(url_for('register', form=form, title='Register'))
@@ -387,15 +414,16 @@ def page_not_found(e):
 
 # Error 500- adapted from Corey Schafer Flask Series
 
+
 @app.errorhandler(500)
 def internal_server_error(e):
     """
     Route for handling 500 error
     """
     return render_template('500.html', title='Internal server error'), 500
-    
- 
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
-            debug=True)
+            debug=True)      
