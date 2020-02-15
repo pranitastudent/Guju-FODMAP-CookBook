@@ -226,7 +226,7 @@ def update_task(task_id):
                             'instruction4' : request.form['instruction4'],
                             'instruction5' : request.form['instruction5'],
                             'instruction6' : request.form['instruction6'],
-                                                                    }})
+                            }})
             flash('Your Recipe has been updated', 'info')
             return redirect(url_for('task', task_id=task_id)) 
     flash('Sorry not your recipe to edit!', 'danger')
@@ -381,22 +381,20 @@ def logout():
 @app.errorhandler(404)
 def page_not_found(e):
     """
-    Route for handling 404 errors
+    Route for handling 404 error
     """
-    return render_template('404.html', title="Page not found")
+    return render_template('404.html', title='Page not found'), 404
 
 # Error 500- adapted from Corey Schafer Flask Series
 
 @app.errorhandler(500)
 def internal_server_error(e):
-    """"
-    Route for handling 500 errors
     """
-    return render_template('500.html', title="Internal server error")
+    Route for handling 500 error
+    """
+    return render_template('500.html', title='Internal server error'), 500
     
-  
-
-
+ 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
