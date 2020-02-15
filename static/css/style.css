@@ -89,6 +89,12 @@ a.link {
     min-height:600px; 
 }
 
+/* Results */
+
+.album {
+    padding-bottom: 8rem;
+}
+
 /* Lead text */
 
 .lead {
