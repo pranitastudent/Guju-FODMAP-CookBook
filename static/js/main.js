@@ -14,9 +14,8 @@ setTimeout(function(){
 
 $(document).ready(function() {
     $(window).scroll(function() {
-        if ($(this).scrollTop() > 850) {
+        if ($(this).scrollTop() > 750) {
             $('#topBtn').fadeIn();
-
         }
         else {
             $("#topBtn").fadeOut();
@@ -27,7 +26,7 @@ $(document).ready(function() {
         $('body,html').animate({
                 scrollTop: 0
             },
-            200
+            100
         );
         return false;
     });
