@@ -4,14 +4,14 @@
 
 ## Project Entrails and Purpose
 
-<p> A Gujarati FODMAP Cookbook is being created for the Data Centric Project. It is difficult to find FODMAP friendly Gujarati Recipes hence as personal issue this project is being created. A User who wishes to find Gujarati FODMAP friendly recipes will be able to use the site to do so . The user will be a user looking for Gujarati FODMAP friendly recipes. The user will be able to view recipes for all three courses; starters, mains and deserts ( all which are FODMAP friendly).   The user will be able to view the recipe steps for each recipe, the cooking time , serving size and calorie count for all recipes. The user will be able to register and login into the site. The login privilege will allow the user to add there own recipe, delete and edit only there own recipe. All users will be able to like recipes and hence upvote. Logged in users will only be able to create, update and delete their won recipes. A non-logged in user will only be able to view recipes. In addition the user will be able to view the author's story about the  reason for the creation of a Gujarati FODMAP friendly site under the about section.<strong> Please note that this website is only for educational purposes to fulfil the criteris of Milestone Data Centric Project</strong></p>
+<p> A Gujarati FODMAP Cookbook is being created for the Data Centric Project. It is difficult to find FODMAP friendly Gujarati Recipes hence as personal issue this project is being created. A User who wishes to find Gujarati FODMAP friendly recipes will be able to use the site to do so . The user will be a user looking for Gujarati FODMAP friendly recipes. The user will be able to view recipes for all three courses; starters, mains and deserts ( all which are FODMAP friendly).   The user will be able to view the recipe steps for each recipe, the cooking time , serving size and calorie count for all recipes. The user will be able to register and login into the site. The login privilege will allow the user to add there own recipe, delete and edit only there own recipe. All users will be able to like recipes and hence upvote. Logged in users will only be able to create, update and delete their won recipes. A non-logged in user will only be able to view recipes. In addition the user will be able to view the author's story about the  reason for the creation of a Gujarati FODMAP friendly site under the about section.<strong> Please note that this website is only for educational purposes to fulfil the criteris of Milestone Data Centric Project.</strong></p>
 
 ## UX Design - User Experience
 <br>
 
 <p> The Header and Footer and main primary colour of the site is blue. Blue is used as the official Monash FODMAP app is blue and is associated with FODMAP.
  The user regardless of being logged in should be able to view all recipes of all courses and each recipe individually which details the method, ingredients, photo of finished dish, upvotes , cooking time, serving size, course of the recipe. In addition if a user creates a recipe then there name is added as author of that recipe. The user should be able to register and login in securely using the authentication process. The logged in user will be able to create, update and delete their own recipes.  
-The user must be able to search for a recipe using 'keywords' in the search bar and a result pertaining to the search will appear. A user will be able to filter through the recipes using the two filters: Course Labels (Starter, Main, Desert) and Allergens ( Soy, Eggs etc) Pagination is added to the site and a total of six recipes can be viewed at any one time. The web application fulfils the CRUD operations</p>
+The user must be able to search for a recipe using 'keywords' in the search bar and a result pertaining to the search will appear. A user will be able to filter through the recipes using the two filters: Course Labels (Starter, Main, Desert) and Allergens ( Soy, Eggs etc) Pagination is added to the site and a total of six recipes can be viewed at any one time. The web application fulfils the CRUD operations.</p>
 
 ### CRUD
 
@@ -32,10 +32,10 @@ The user must be able to search for a recipe using 'keywords' in the search bar 
 ## User Stories
 
 <ul>
-<li> As a user to the site I should view a responsive site on ; desktop, mobile, tablet and large screens</li> 
+<li> As a user to the site I should view a responsive site on ; desktop, mobile, tablet and large screens.</li> 
 <li> As a user to the site I should be able to view all recipes available. I should be able to view the recipe steps, cooking time, serving portion and calorie count for all recipes.</li>
-<li> As a user I should be able to register on the website and login</li>
-<li> As a user I should be able to search for a recipe using keywords and the relevant results must show </li>
+<li> As a user I should be able to register on the website and login.</li>
+<li> As a user I should be able to search for a recipe using keywords and the relevant results must show. </li>
 <li> As a user I must be able to filter through the recipes using the filters and results pertaining to my filter choices must show.
 <li> As a logged in user I should be able to edit, delete and create my recipes. My own recipes can only be edited and deleted.</li>
 </ul>
@@ -60,36 +60,36 @@ A database schema is provided so that I can visualise the table.
 <p>A non logged in user is able to access the following links on the navbar:</p>
 
 <ul>
-<li> Home page- Able to view all recipes and individual recipe pages. Search through partial/full recipe names and filter through course and allergens for recipe of choice.  Moving through the collection of recipes using the pagination links at the bottom of the page.
-<li> About Page- View the page to find out why the site was created and who created it </li>
-<li> Register - Able to register through filling out registration form </li>
-<li> Login- Able to login once registered through filling out login form <li>
+<li> Home page- Able to view all recipes and individual recipe pages. Search through partial/full recipe names and filter through course and allergens for recipe of choice.  Moving through the collection of recipes using the pagination links at the bottom of the page.</li>
+<li> About Page- View the page to find out why the site was created and who created it. </li>
+<li> Register - Able to register through filling out registration form. </li>
+<li> Login- Able to login once registered through filling out login form. <li>
 
 </ul>
 
 ### Logged in user
 
-</p> A logged in user is able to access the following links the navbar</p>
+</p> A logged in user is able to access the following links the navbar.</p>
 
 <ul>
 
-<li> Add Recipe - A logged in user can create a recipe through the add recipe form </li>
-<li> Logout - A logged in user can logout</li>
+<li> Add Recipe - A logged in user can create a recipe through the add recipe form. </li>
+<li> Logout - A logged in user can logout.</li>
 <li> Home page- Able to view all recipes and individual recipe pages. Search through partial/full recipe names and filter through course and allergens for recipe of choice. Moving through the collection of recipes using the pagination links at the bottom of the page.</li>
 <li> Recipe page- A logged in user can edit there own recipe through clicking Edit on the recipe page - filling out the form and delete their own recipe through clicking delete on the recipe page.
-<li> About Page- View the page to find out why the site was created and who created it </li>
+<li> About Page- View the page to find out why the site was created and who created it.</li>
 
 </ul>
 
 ### Features left to implement
 
 <ul>
-<li> A reset password facility whereby user can click on reset password , have an email sent to them which contains a reset form link. The user can them enter there new password twice and it is updated in the user collection in MongoDB. </li>
+<li> A reset password facility whereby user can click on reset password , have an email sent to them which contains a reset form link. The user can them enter there new password twice and it is updated in the user collection in MongoDB.</li>
 </ul>
 
 ## Technologies Used
 
-<p> The Data Centric will include the following Front-End Technologies; HTML,CSS and JavaScript. The Back-End code will be written in Python. The non-relational database MongoDB will be used to store data for the recipes, and registered users.
+<p> The Data Centric will include the following Front-End Technologies; HTML,CSS and JavaScript. The Back-End code will be written in Python. The non-relational database MongoDB will be used to store data for the recipes, and registered users.</p>
 
 ### IDE
 
@@ -144,7 +144,7 @@ A database schema is provided so that I can visualise the table.
 
 #### Python
 
-<p> Python code is tested via unit testing. Unit Testing is carried out to check whether a recipe exists in the database through testing its ObjectID. The login, register and logout routes are tested to assert whether a Http Response of 200 is obtained. All 9 unit tests were found to pass</p>
+<p> Python code is tested via unit testing. Unit Testing is carried out to check whether a recipe exists in the database through testing its ObjectID. The login, register and logout routes are tested to assert whether a Http Response of 200 is obtained. All 9 unit tests were found to pass.</p>
 
 <p> Unit tests were run in the terminal using the following command: </p>
 
@@ -164,7 +164,7 @@ A database schema is provided so that I can visualise the table.
 
 ```
 
-<p> Python code was validated fully  using pep8 and autopep8 </p>
+<p> Python code was validated fully  using pep8 and autopep8.</p>
 
 #### HTML and CSS
 
@@ -191,7 +191,7 @@ A database schema is provided so that I can visualise the table.
 
 <ul>
 <li> A non-logged user interested in Gujarati LOW-FODMAP recipes is able to view all recipes noting the course and allergen and each individual recipe to ascertain : cooking time, course, serving size, calories , method , description and see an image of the dish produced. </li>
-<li> A non-logged in user can register through the registration form and login. Google reCAPTCHA is present on the login form as an extra security measure </li>
+<li> A non-logged in user can register through the registration form and login. Google reCAPTCHA is present on the login form as an extra security measure. </li>
 <li> All users are permitted to search for a recipe through inserting a partial recipe name e.g 'Gluten' , all recipes with Gluten in there recipe name will show up or by full name to find the recipe of interest.</li>
 <li> All users can filter for a recipe by course e.g 'Main' , all main courses will appear on the results page and filter by allergen 'Nuts'. All recipes with Nuts as an allergen will appear to find the recipe of choice.</li>
 <li> A logged in user is able to complete all CRUD operations. These included : </li>
@@ -199,7 +199,7 @@ A database schema is provided so that I can visualise the table.
 </ul>
 
 #### Create
-<p> A logged in user can create a recipe through filling out the add recipe form. Each Field through the placeholder makes it clear which information to required. If a required field is missing then the form will not be submitted and the user is directed to the field which contains the missing information (form validation). In addition Google reCaptcha is inserted  as a extra security measure</p>
+<p> A logged in user can create a recipe through filling out the add recipe form. Each Field through the placeholder makes it clear which information to required. If a required field is missing then the form will not be submitted and the user is directed to the field which contains the missing information (form validation). In addition Google reCaptcha is inserted  as a extra security measure.</p>
 
 #### Read
 
@@ -207,7 +207,7 @@ A database schema is provided so that I can visualise the table.
 
 #### Update
 
-<p> A logged user can edit/update there own recipe (defensive design). If a user tries to update a recipe that does not belong to them, then an alert appears informing them that they can't update that particular recipe. In addition Google reCaptcha is inserted  as a extra security measure</p>
+<p> A logged user can edit/update there own recipe (defensive design). If a user tries to update a recipe that does not belong to them, then an alert appears informing them that they can't update that particular recipe. In addition Google reCaptcha is inserted  as a extra security measure.</p>
 
 
 #### Delete
@@ -236,13 +236,13 @@ A database schema is provided so that I can visualise the table.
 <li> iPad Pro </li>
 </ul>
 
-<p> On mobile devices elements are stacked on top of each other as expected accordingly to the grid system </p>
+<p> On mobile devices elements are stacked on top of each other as expected accordingly to the grid system.</p>
 
 ## Deployment
 
 ### IDE
 
-<p> Code was written in Visual Studio Code </p>
+<p> Code was written in Visual Studio Code. </p>
 
 ### Git and GitHub
 
@@ -264,7 +264,7 @@ A database schema is provided so that I can visualise the table.
 
  <li> Create and env.py file on the root level and set up environmental variables. Contact the author allow for there environmental variables to be inserted otherwise your own database and collection can be created in MongoDB with the fields specified in the Schema above. </li>
 
- <li> Google reCAPTCHA credentials can be obtained through setting up a Google account and following through the instructions and inserting the domain name where the site will be run </li>
+ <li> Google reCAPTCHA credentials can be obtained through setting up a Google account and following through the instructions and inserting the domain name where the site will be run.</li>
 
  `os.environ["MONGO_DBNAME"] = 'databasename'`
  `os.environ["MONGO_URI"] = 'mongosrv added `
@@ -280,12 +280,12 @@ A database schema is provided so that I can visualise the table.
 
 #### Deploying to Heroku
 
-<p> The application was deployed to Heroku </p>
+<p> The application was deployed to Heroku.</p>
 
 <ol>
 <li> A requirements.txt file (contains dependencies needed to for application to run) was created using the command :
 
-` sudo pip3 freeze --local > requirements.txt ` . A requirements.txt file was created at the root level of the project folder </li>
+` sudo pip3 freeze --local > requirements.txt ` . A requirements.txt file was created at the root level of the project folder. </li>
 
 <li> A Procfile was created in order for Heroku to recognise the python language using the command : 
 
@@ -296,11 +296,11 @@ A database schema is provided so that I can visualise the table.
 
  `heroku login` command is used to login to Heroku. A unique app name is added in Heroku and the region of choice is chosen. </li>
 
-<li> Under the Settings > Config Vars. The environmental variables for : MONGO_DB, MONGO_URI, SECRET_KEY, RECPATCHA_PUBLIC, RECAPTCHA_PRIVATE  are inserted respectively into the key and value fields </li>
+<li> Under the Settings > Config Vars. The environmental variables for : MONGO_DB, MONGO_URI, SECRET_KEY, RECPATCHA_PUBLIC, RECAPTCHA_PRIVATE  are inserted respectively into the key and value fields.</li>
 
 <li> Next the project is pushed to Heroku using the command : 
 
-` git push heroku master `. The push should be displayed as successful </li>
+` git push heroku master `. The push should be displayed as successful.</li>
 
 <li> Next to run the app the command:
 
@@ -310,7 +310,7 @@ A database schema is provided so that I can visualise the table.
 <li> Additionally the IP has to specified and PORT. Hence :
 
 ` IP : 0.0.0.0.`
-` PORT : 5000` are inserted as key and value fields in Config Vars on Heroku </li>
+` PORT : 5000` are inserted as key and value fields in Config Vars on Heroku.</li>
 
 <li> The 'open app' on the top right can be clicked and the application should be fully visible and functioning.
 
@@ -323,7 +323,7 @@ The application is finally deployed at [guju-cookbook-fodmap](https://guju-cookb
 
 ## Credits
 
-<strong> All images and recipe instructions are used for educational purposes for the Data Centric Project and therefore don't need to be referenced </strong>
+<strong> All images and recipe instructions are used for educational purposes for the Data Centric Project and therefore don't need to be referenced. </strong>
 
 ### References 
 
