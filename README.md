@@ -130,10 +130,13 @@ A database schema is provided so that I can visualise the table.
 
 #### MongoDB
 
-<p> MongoDB is a documented orientated database where data is stored in key and field format(BSON). A database and collections are created. To app.py the following Config Variables are added to connect to the database , these are then stored an environmental variables and added to Heroku Config Variables section:
+<p> MongoDB is a documented orientated database where data is stored in key and field format(BSON). A database and collections are created. To app.py the following Config Variables are added to connect to the database , these are then stored an environmental variables and added to Heroku Config Variables section:</p>
 
 ` app.config["MONGO_DBNAME]='DBNAME `
 ` app.config["MONGO_URI]= mongosrv added `
+
+<p> A tasks collection and user collection was created under the task_manager database with the fields and field types outlined in the Database Scheme.
+In the user collection, each record for a user,  the password was hashed in the registration function using werkzeug security. The password is seen as hashed in the Mongo database.</p>
 
 ### Deployment
 <ul>
@@ -191,7 +194,7 @@ A database schema is provided so that I can visualise the table.
 
 <ul>
 <li> A non-logged user interested in Gujarati LOW-FODMAP recipes is able to view all recipes noting the course and allergen and each individual recipe to ascertain : cooking time, course, serving size, calories , method , description and see an image of the dish produced. </li>
-<li> A non-logged in user can register through the registration form and login. Google reCAPTCHA is present on the login form as an extra security measure. </li>
+<li> A non-logged in user can register through the registration form and login. Google reCAPTCHA is present on the login form as an extra security measure. The password is hashed using werkzeug security as a security measure and the password is checked against the one in the database using werkzeug. </li>
 <li> All users are permitted to search for a recipe through inserting a partial recipe name e.g 'Gluten' , all recipes with Gluten in their recipe name will show up or by full name to find the recipe of interest.</li>
 <li> All users can filter for a recipe by course e.g 'Main' , all main courses will appear on the results page and filter by allergen 'Nuts'. All recipes with Nuts as an allergen will appear to find the recipe of choice.</li>
 <li> A logged in user is able to complete all CRUD operations. These included : </li>
