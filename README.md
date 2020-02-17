@@ -85,6 +85,7 @@ A database schema is provided so that I can visualise the table.
 
 <ul>
 <li> A reset password facility whereby user can click on reset password , have an email sent to them which contains a reset form link. The user can them enter there new password twice and it is updated in the user collection in MongoDB. </li>
+</ul>
 
 ## Technologies Used
 
@@ -105,14 +106,12 @@ A database schema is provided so that I can visualise the table.
 ### Front-end Technologies and Frameworks
 
 <ul>
-
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5"> HTML5 </a></li> HTML 5 was used to create the structure of webpage with the necessary elements.
 <li><a href="https://www.w3.org/Style/CSS/Overview.en.html"> CSS3 </a></li> CSS3 was used to write custom CSS styles the webpage with the necessary attributes.
 <li><a href="https://getbootstrap.com/"> Bootstrap v 4.4 </a> </li>  The Bootstrap framework is used to style the webpage alongside custom CSS and the grid system is adhered to.
 <li><a href ="https://www.javascript.com/">JavaScript</a></li> JavaScript was used to write the function for year code.
 <li><a href = "https://jquery.com/">JQuery</a></li>JQuery is used to create the back-to-the top button function and animate fadeout function for the alerts.
 <li><a href="https://fontawesome.com/">Font Awesome</a></li> Font Awesome is used to add icons to text to make it visually appealing.
-
 </ul>
 
 ### Back-end Technologies and Frameworks
@@ -121,7 +120,6 @@ A database schema is provided so that I can visualise the table.
 <li><a href = "https://www.python.org/">Python</a></li> Python is used as the back-end coding language to write functions and enable 'GET' and 'POST' requests.
 <li><a href="https://www.fullstackpython.com/flask.html">Flask</a></li>Flask is microframework of python used to create routes and forms.
 <li><a href = "https://jinja.palletsprojects.com/en/2.10.x/">Jinja</a></li>Jinja is a templating language which works alongside python and flask to create templates.
-
 </ul>
 
 ### Database
@@ -146,8 +144,7 @@ A database schema is provided so that I can visualise the table.
 
 #### Python
 
-<p> All python code is autopep8 and pep8 compliant
-
+<p> Python code is tested via unit testing. Unit Testing is carried out to check whether a recipe exists in the database through testing its ObjectID. The login, register and logout routes are tested to assert whether a Http Response of 200 is obtained.</p>
 
 
 

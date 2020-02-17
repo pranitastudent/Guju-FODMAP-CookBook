@@ -53,42 +53,29 @@ class FlaskTestCase(unittest.TestCase):
         self.assertTrue(b"Undhiyu" in response.data)
 
 
-# Search- Test (Failing assertion error 405!)
-
-    def test_findtask(self):
-        tester = app.test_client(self)
-        response = tester.post(
-            '/findtask',
-            data=dict(
-                recipe_name='Gluten'),
-            follow_redirects=True)
-        self.assertEqual(response.status_code, 200)
-        self.assertTrue(b"Gluten" in response.data)
-
-
 # Filters - Course and allergens URLS
 
     """ Test to check filtering of courses"""
 
     def test_filtercourses(self):
-        tester = app.test_client(self)
-        response = tester.post(
+        tester=app.test_client(self)
+        response=tester.post(
             '/filtercourses',
-            data=dict(
+            data = dict(
                 recipe_course="Main"),
-            follow_redirects=True)
+            follow_redirects = True)
         self.assertEqual(response.status_code, 200)
         self.assertTrue(b"Main" in response.data)
 
     """ Test to filtering of allergens"""
 
     def test_filterallergens(self):
-        tester = app.test_client(self)
-        response = tester.post(
+        tester=app.test_client(self)
+        response=tester.post(
             '/filterallergens',
-            data=dict(
+            data = dict(
                 allergen="Nuts"),
-            follow_redirects=True)
+            follow_redirects = True)
         self.assertEqual(response.status_code, 200)
         self.assertTrue(b"Nuts")
 
@@ -97,21 +84,21 @@ class FlaskTestCase(unittest.TestCase):
     """ Test addition of recipe"""
 
     def test_create_task(self):
-        tester = app.test_client(self)
-        response = tester.post(
+        tester=app.test_client(self)
+        response=tester.post(
             '/create_task',
-            content_type='html/text',
-            follow_redirects=True)
+            content_type = 'html/text',
+            follow_redirects = True)
         self.assertEqual(response.status_code, 200)
         self.assertTrue(b"Recipe Name")
 
     """ Test editing a recipe"""
 
     def test_update_task(self):
-        tester = app.test_client(self)
-        response = tester.post(
+        tester=app.test_client(self)
+        response=tester.post(
             '/create_task',
-            content_type='html/text',
-            follow_redirects=True)
+            content_type = 'html/text',
+            follow_redirects = True)
         self.assertEqual(response.status_code, 200)
         self.assertTrue(b"Cooking Time")

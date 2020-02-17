@@ -34,9 +34,10 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-
-    # Pagination- Adapated and taken code from Code with Harry and
-    # S.MuirHead(Recipe CookBook App - MIT License)
+    """
+    Pagination- Adapated and taken code from Code with Harry and
+    S.MuirHead(Recipe CookBook App - MIT License)
+    """
 
     page_limit = 6
     current_page = int(request.args.get('current_page', 1))
@@ -93,8 +94,10 @@ def findtask():
 
 # Filters
 
-# Filter for course only-  Adapated and taken code from pretty printed and
-# S.MuirHead(Recipe CookBook App - MIT License.)
+"""
+Filter for course only-  Adapated and taken code from pretty printed and
+S.MuirHead(Recipe CookBook App - MIT License.)
+"""
 
 @app.route('/filtercourses', methods=['GET', 'POST'])
 def filtercourses():
@@ -331,8 +334,10 @@ def login():
             flash('Sorry incorrect password!', 'danger')
 
             return redirect(url_for('login'))
-        # If none of the form is valid or nothing matches username or password
-        # then redirect to login
+        """
+        If none of the form is valid or nothing matches username or password
+        then redirect to login
+        """
         flash(
             'Sorry Your credentials are incorrect (username) please check and try again',
             'danger')
@@ -362,8 +367,10 @@ def register():
             print(exist_user)
 
             if exist_user is None:
-                # If new user insert username, password and email into
-                # collection
+                """
+                If new user insert username, password and email into
+                collection
+                """
                 hash_pass = generate_password_hash(
                     request.form.get('password'))
                 user.insert_one({'name': request.form.get('username').title(),
