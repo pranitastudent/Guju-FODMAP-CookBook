@@ -4,13 +4,13 @@
 
 ## Project Entrails and Purpose
 
-<p> A Gujarati FODMAP Cookbook is being created for the Data Centric Project. It is difficult to find FODMAP friendly Gujarati Recipes hence as personal issue this project is being created. A User who wishes to find Gujarati FODMAP friendly recipes will be able to use the site to do so . The user will be a user looking for Gujarati FODMAP friendly recipes. The user will be able to view recipes for all three courses; starters, mains and deserts ( all which are FODMAP friendly).   The user will be able to view the recipe steps for each recipe, the cooking time , serving size and calorie count for all recipes. The user will be able to register and login into the site. The login privilege will allow the user to add there own recipe, delete and edit only there own recipe. All users will be able to like recipes and hence upvote. Logged in users will only be able to create, update and delete their won recipes. A non-logged in user will only be able to view recipes. In addition the user will be able to view the author's story about the  reason for the creation of a Gujarati FODMAP friendly site under the about section.<strong> Please note that this website is only for educational purposes to fulfil the criteris of Milestone Data Centric Project.</strong></p>
+<p> A Gujarati FODMAP Cookbook is being created for the Data Centric Project. It is difficult to find FODMAP friendly Gujarati Recipes hence as personal issue this project is being created. A User who wishes to find Gujarati FODMAP friendly recipes will be able to use the site to do so . The user will be a user looking for Gujarati FODMAP friendly recipes. The user will be able to view recipes for all three courses; starters, mains and deserts ( all which are FODMAP friendly).   The user will be able to view the recipe steps for each recipe, the cooking time , serving size and calorie count for all recipes. The user will be able to register and login into the site. The login privilege will allow the user to add their own recipe, delete and edit only their own recipe. All users will be able to like recipes and hence upvote. Logged in users will only be able to create, update and delete their own recipes. A non-logged in user will only be able to view recipes. In addition the user will be able to view the author's story about the  reason for the creation of a Gujarati FODMAP friendly site under the about section.<strong> Please note that this website is only for educational purposes to fulfil the criteria of Milestone Data Centric Project.</strong></p>
 
 ## UX Design - User Experience
 <br>
 
 <p> The Header and Footer and main primary colour of the site is blue. Blue is used as the official Monash FODMAP app is blue and is associated with FODMAP.
- The user regardless of being logged in should be able to view all recipes of all courses and each recipe individually which details the method, ingredients, photo of finished dish, upvotes , cooking time, serving size, course of the recipe. In addition if a user creates a recipe then there name is added as author of that recipe. The user should be able to register and login in securely using the authentication process. The logged in user will be able to create, update and delete their own recipes.  
+ The user regardless of being logged in should be able to view all recipes of all courses and each recipe individually which details the method, ingredients, photo of finished dish, upvotes , cooking time, serving size, course of the recipe. In addition if a user creates a recipe then their name is added as author of that recipe. The user should be able to register and login in securely using the authentication process. The logged in user will be able to create, update and delete their own recipes.  
 The user must be able to search for a recipe using 'keywords' in the search bar and a result pertaining to the search will appear. A user will be able to filter through the recipes using the two filters: Course Labels (Starter, Main, Desert) and Allergens ( Soy, Eggs etc) Pagination is added to the site and a total of six recipes can be viewed at any one time. The web application fulfils the CRUD operations.</p>
 
 ### CRUD
@@ -24,10 +24,10 @@ The user must be able to search for a recipe using 'keywords' in the search bar 
 
 #### Update
 
-<p> A logged in user is able to edit there own recipe through the edit recipe form. If they try to edit another author's recipe, an alert is flashed up 'Sorry this is not your recipe to update' warning them they can only edit there own recipes. The updated data is saved to again to the MongoDB database collection. Names of the authors are visible on each recipe page making it easy to identify  recipes.</p>
+<p> A logged in user is able to edit their own recipe through the edit recipe form. If they try to edit another author's recipe, an alert is flashed up 'Sorry this is not your recipe to update' warning them they can only edit their own recipes. The updated data is saved to again to the MongoDB database collection. Names of the authors are visible on each recipe page making it easy to identify  recipes.</p>
 
 #### Delete
-<p> A logged in user is able to delete there own recipe by clicking on the delete button and then again to confirm deletion is required. If they try to delete a recipe where they are not the author, an alert is flashed up 'Sorry this is not your recipe to delete' warning them they can only delete there own recipes. The  deleted record removed from the MongoDB database collection. Names of the authors are visible on each recipe page making it easy to identify  recipes.</p>
+<p> A logged in user is able to delete their own recipe by clicking on the delete button and then again to confirm deletion is required. If they try to delete a recipe where they are not the author, an alert is flashed up 'Sorry this is not your recipe to delete' warning them they can only delete their own recipes. The  deleted record removed from the MongoDB database collection. Names of the authors are visible on each recipe page making it easy to identify  recipes.</p>
 
 ## User Stories
 
@@ -76,7 +76,7 @@ A database schema is provided so that I can visualise the table.
 <li> Add Recipe - A logged in user can create a recipe through the add recipe form. </li>
 <li> Logout - A logged in user can logout.</li>
 <li> Home page- Able to view all recipes and individual recipe pages. Search through partial/full recipe names and filter through course and allergens for recipe of choice. Moving through the collection of recipes using the pagination links at the bottom of the page.</li>
-<li> Recipe page- A logged in user can edit there own recipe through clicking Edit on the recipe page - filling out the form and delete their own recipe through clicking delete on the recipe page.
+<li> Recipe page- A logged in user can edit their own recipe through clicking Edit on the recipe page - filling out the form and delete their own recipe through clicking delete on the recipe page.
 <li> About Page- View the page to find out why the site was created and who created it.</li>
 
 </ul>
@@ -84,7 +84,7 @@ A database schema is provided so that I can visualise the table.
 ### Features left to implement
 
 <ul>
-<li> A reset password facility whereby user can click on reset password , have an email sent to them which contains a reset form link. The user can them enter there new password twice and it is updated in the user collection in MongoDB.</li>
+<li> A reset password facility whereby user can click on reset password , have an email sent to them which contains a reset form link. The user can them enter their new password twice and it is updated in the user collection in MongoDB.</li>
 </ul>
 
 ## Technologies Used
@@ -192,7 +192,7 @@ A database schema is provided so that I can visualise the table.
 <ul>
 <li> A non-logged user interested in Gujarati LOW-FODMAP recipes is able to view all recipes noting the course and allergen and each individual recipe to ascertain : cooking time, course, serving size, calories , method , description and see an image of the dish produced. </li>
 <li> A non-logged in user can register through the registration form and login. Google reCAPTCHA is present on the login form as an extra security measure. </li>
-<li> All users are permitted to search for a recipe through inserting a partial recipe name e.g 'Gluten' , all recipes with Gluten in there recipe name will show up or by full name to find the recipe of interest.</li>
+<li> All users are permitted to search for a recipe through inserting a partial recipe name e.g 'Gluten' , all recipes with Gluten in their recipe name will show up or by full name to find the recipe of interest.</li>
 <li> All users can filter for a recipe by course e.g 'Main' , all main courses will appear on the results page and filter by allergen 'Nuts'. All recipes with Nuts as an allergen will appear to find the recipe of choice.</li>
 <li> A logged in user is able to complete all CRUD operations. These included : </li>
 
@@ -207,12 +207,12 @@ A database schema is provided so that I can visualise the table.
 
 #### Update
 
-<p> A logged user can edit/update there own recipe (defensive design). If a user tries to update a recipe that does not belong to them, then an alert appears informing them that they can't update that particular recipe. In addition Google reCaptcha is inserted  as a extra security measure.</p>
+<p> A logged user can edit/update their own recipe (defensive design). If a user tries to update a recipe that does not belong to them, then an alert appears informing them that they can't update that particular recipe. In addition Google reCaptcha is inserted  as a extra security measure.</p>
 
 
 #### Delete
 
-<p> A logged user can only delete there own recipe (defensive design). Additionally a user is asked twice to confirm deletion as a confirmation measure.If a user tries to delete a recipe that does not belong to them, then an alert appears informing them that they can't update that particular recipe.</p>
+<p> A logged user can only delete their own recipe (defensive design). Additionally a user is asked twice to confirm deletion as a confirmation measure.If a user tries to delete a recipe that does not belong to them, then an alert appears informing them that they can't update that particular recipe.</p>
 
 ### Testing Responsive Design
 
@@ -237,6 +237,10 @@ A database schema is provided so that I can visualise the table.
 </ul>
 
 <p> On mobile devices elements are stacked on top of each other as expected accordingly to the grid system.</p>
+
+### Testing the application on the development and production server.
+
+<p> All links were tested on the production and development server. All were found to be working. Alerts were tested and found to working. Users could register and login and add and edit recipes using the forms as expected. User added recipes were visible on both development and production servers. Google reCAPTCHA was found to working on the local and production server - Heroku as expected. Debug was set to False when on production server as a security measure.</p>
 
 ## Deployment
 
@@ -378,9 +382,15 @@ The application is finally deployed at [guju-cookbook-fodmap](https://guju-cookb
 
  </li>
 
+ <li>
+
+ Select box CSS adapted from:
+
+ [Styling a Select Like It’s 2019](https://css-tricks.com/styling-a-select-like-its-2019/)
+
+ </li>
+
  </ol>
-
-
 
 ## Acknowledgements
 

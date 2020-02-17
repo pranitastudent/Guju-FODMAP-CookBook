@@ -204,7 +204,7 @@ def update_task(task_id):
     # Check if user is logged in
     if 'logged_in' not in session:  # Check if its a logged in user
         flash(
-            'Sorry, only logged in users can edit there own recipes. Please login',
+            'Sorry, only logged in users can edit their own recipes. Please login',
             'info')
         return redirect(url_for('index'))
 
@@ -433,4 +433,4 @@ def internal_server_error(e):
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
-            debug=True)      
+            debug=False)      
