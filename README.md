@@ -9,16 +9,18 @@
 ## UX Design - User Experience
 <br>
 
-<p> The Header and Footer and main primary colour of the site is blue. Blue is used as the official Monash FODMAP app is blue and is associated with FODMAP.
+<p>The Header and Footer and main primary colour of the site is blue. Blue is used as the official Monash FODMAP app is blue and is associated with FODMAP.
  The user regardless of being logged in should be able to view all recipes of all courses and each recipe individually which details the method, ingredients, photo of finished dish, upvotes , cooking time, serving size, course of the recipe. In addition if a user creates a recipe then their name is added as author of that recipe. The user should be able to register and login in securely using the authentication process. The logged in user will be able to create, update and delete their own recipes.  
-The user must be able to search for a recipe using 'keywords' in the search bar and a result pertaining to the search will appear. A user will be able to filter through the recipes using the two filters: Course Labels (Starter, Main, Desert) and Allergens ( Soy, Eggs etc) Pagination is added to the site and a total of six recipes can be viewed at any one time. The web application fulfils the CRUD operations.</p>
+The user must be able to search for a recipe using 'keywords' in the search bar and a result pertaining to the search will appear. A user will be able to filter through the recipes using the two filters: Course Labels (Starter, Main, Desert) and Allergens ( Nuts, Eggs etc). Pagination is added to the site and a total of six recipes can be viewed at any one time. The web application fulfils the CRUD operations.</p>
 
 ### CRUD
 
 #### Create
+
 <p> A logged in user is able to create a recipe through filling in the add recipe form. The data entered is added to MongoDB database collection.</p>
 
 #### Read
+
 <p> All users despite being logged in or not are able to view all recipes and single recipe pages.</p>
 
 
@@ -36,7 +38,7 @@ The user must be able to search for a recipe using 'keywords' in the search bar 
 <li> As a user to the site I should be able to view all recipes available. I should be able to view the recipe steps, cooking time, serving portion and calorie count for all recipes.</li>
 <li> As a user I should be able to register on the website and login.</li>
 <li> As a user I should be able to search for a recipe using keywords and the relevant results must show. </li>
-<li> As a user I must be able to filter through the recipes using the filters and results pertaining to my filter choices must show.
+<li> As a user I must be able to filter through the recipes using the filters for course and allergens and results pertaining to my filter choices must show.</li>
 <li> As a logged in user I should be able to edit, delete and create my recipes. My own recipes can only be edited and deleted.</li>
 </ul>
 
@@ -94,13 +96,13 @@ A database schema is provided so that I can visualise the table.
 ### IDE
 
 <ul>
-<li><a href="https://code.visualstudio.com/">Visual Studio Code</a></li>Visual Studio Code was used as the chosen IDE and all code was written in Visual Studio Code.
+<li><a href="https://code.visualstudio.com/">Visual Studio Code</a></li>Visual Studio Code was used as the chosen IDE and all code was written in Visual Studio Code.</li>
 </ul>
 
 ### Version Control
 
 <ul>
-<li><a href = "https://git-scm.com/">Git</a></li>Git is used as a version control system to add, commit and push files to the local repository.
+<li><a href = "https://git-scm.com/">Git</a></li>Git is used as a version control system to add, commit and push files to the local repository.</li>
 </ul>
 
 ### Front-end Technologies and Frameworks
@@ -136,7 +138,7 @@ A database schema is provided so that I can visualise the table.
 ` app.config["MONGO_URI]= mongosrv added `
 
 <p> A tasks collection and user collection was created under the task_manager database with the fields and field types outlined in the Database Scheme.
-In the user collection, each record for a user,  the password was hashed in the registration function using werkzeug security. The password is seen as hashed in the Mongo database.</p>
+In the user collection, each record for a user,  the password was hashed in the registration function using werkzeug security. The password is stored as a hashed password in the Mongo database.</p>
 
 ### Deployment
 <ul>
@@ -147,7 +149,7 @@ In the user collection, each record for a user,  the password was hashed in the 
 
 #### Python
 
-<p> Python code is tested via unit testing. Unit Testing is carried out to check whether a recipe exists in the database through testing its ObjectID. The login, register and logout routes are tested to assert whether a Http Response of 200 is obtained. All 9 unit tests were found to pass.</p>
+<p> Python code is tested via unit testing. Unit Testing is carried out to check whether a recipe exists in the database through testing its ObjectID. The login, register and logout routes are tested to assert whether a HTTP Response of 200 is obtained. All 9 unit tests were found to pass.</p>
 
 <p> Unit tests were run in the terminal using the following command: </p>
 
@@ -186,7 +188,7 @@ In the user collection, each record for a user,  the password was hashed in the 
 
 #### JavaScript 
 
-<p> JavaScript was validated using:
+<p> JavaScript was validated using: </p>
 
 [JS Hint](https://jshint.com/). No Errors were found.
 
@@ -330,7 +332,8 @@ The application is finally deployed at [guju-cookbook-fodmap](https://guju-cookb
 
 ## Credits
 
-<strong> All images and recipe instructions are used for educational purposes for the Data Centric Project and therefore don't need to be referenced. </strong>
+<strong> All images and recipe instructions are used for educational purposes for the Data Centric Project and therefore don't need to be referenced.
+</strong>
 
 ### References 
 
