@@ -245,7 +245,7 @@ In the user collection, each record for a user,  the password was hashed in the 
 
 ### Testing the application on the development and production server.
 
-<p> All links were tested on the production and development server. All were found to be working. Alerts were tested and found to working. Users could register and login and add and edit recipes using the forms as expected. User added recipes were visible on both development and production servers. Google reCAPTCHA was found to working on the local and production server - Heroku as expected. Debug was set to False when on production server as a security measure.</p>
+<p> All links were tested on the production and development server. All were found to be working. Alerts were tested and found to working. Users could register and login and add and edit recipes using the forms as expected. User added recipes were visible on both development and production servers. Google reCAPTCHA  is implemented on login, add and edit forms was found to working on the local and production server - Heroku as expected. Debug was set to False when on production server as a security measure.</p>
 
 ## Deployment
 
@@ -393,6 +393,14 @@ The application is finally deployed at [guju-cookbook-fodmap](https://guju-cookb
  Select box CSS adapted from:
 
  [Styling a Select Like It’s 2019](https://css-tricks.com/styling-a-select-like-its-2019/)
+
+ </li>
+
+ <li>
+
+ Back to the top button adapted from :
+
+ [Responsive Landing Page Using HTML & CSS (A Little jQuery)-myTunes site Traversy Media 2018](https://www.youtube.com/watch?v=GJXXf3_dcng)
 
  </li>
 

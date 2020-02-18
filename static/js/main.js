@@ -14,7 +14,7 @@ setTimeout(function(){
 
 $(document).ready(function() {
     $(window).scroll(function() {
-        if ($(this).scrollTop() > 750) {
+        if ($(this).scrollTop() > 400) {
             $('#topBtn').fadeIn();
         }
         else {

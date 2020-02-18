@@ -89,7 +89,7 @@ def findtask():
             title="Search")
     else:
         flash('No results were found', 'info')
-    return render_template('index.html')
+        return redirect(url_for('index'))
 
 
 # Filters
