@@ -8,7 +8,7 @@ document.querySelector('.year').innerHTML = date.getFullYear();
 
 setTimeout(function(){
     $('#message').fadeOut('fast');
-}, 2000);
+}, 5000);
 
 // Back To The Top Button- adapted from  Traversy Media you tube video project :'myTunes Site'
 
