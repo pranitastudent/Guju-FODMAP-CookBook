@@ -198,7 +198,7 @@ input {
  select {
      /* CSS adapted for select from Styling a Select Like It’s 2019 */
     display: block;
-    font-size: 16px;
+    font-size: 1rem;
     font-family: sans-serif;
     font-weight: 700;
     color: #444;
@@ -242,7 +242,7 @@ button.btn.btn-link.titles {
      color: #000;
      text-decoration: none;
      font-weight: 300;
-     font-size: 20px;
+     font-size: 1.25rem;
  }
 
  .radio {
@@ -260,7 +260,7 @@ button.btn.btn-link.titles {
     position: fixed;
     bottom: 100px;
     right:40px;
-    font-size: 22px;
+    font-size: 1.37rem;
     width: 50px;
     height: 50px;
     background: var(--secondary-color);
@@ -286,8 +286,8 @@ button.btn.btn-link.titles {
     min-height: 100%;
   }
   .content-inside {
-    padding: 20px;
-    padding-bottom: 50px;
+    padding: 1.25rem;
+    padding-bottom: 3.12rem;
   }
 
  .footer-text {
@@ -309,7 +309,7 @@ button.btn.btn-link.titles {
 
  @media(max-width:500px) {
      .main-title {
-       font-size: 70px;
+       font-size: 4.37rem;
      }
      .pagination {
          margin:auto;
@@ -355,7 +355,7 @@ button.btn.btn-link.titles {
     }
 
     .input-field {
-        padding-left:0px;
+        padding-left:0rem;
     }
 
     .pag-cont {
